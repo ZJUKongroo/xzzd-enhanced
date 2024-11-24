@@ -6,23 +6,16 @@ body{
   height: 100%;
   overflow: hidden;
 }
+html{
+  --xzzd-border-color:rgb(67, 67, 67);
+  --xzzd-bg-color-alpha:#FFFFFFAA;
+  --xzzd-text-color:#2c2c2c;
+  --xzzd-button-hover:#1d1d1d2a;
+  --xzzd-button-active:#1d1d1d4f;
+}
 #app{
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-}
-
-.btn {
-  @apply px-4 py-1 rounded inline-block
-    bg-teal-600 text-white cursor-pointer
-    hover:bg-teal-700
-    disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50;
-}
-
-.icon-btn {
-  @apply inline-block cursor-pointer select-none
-    opacity-75 transition duration-200 ease-in-out
-    hover:opacity-100 hover:text-teal-600;
-  font-size: 0.9em;
 }

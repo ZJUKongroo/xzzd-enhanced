@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import { setupApp } from '~/logic/common-setup'
 import '~/styles/index'
+import 'virtual:svg-icons-register'
 
 // function onDOMLoaded() {
 //   document.body.innerHTML = ''

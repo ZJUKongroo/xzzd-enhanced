@@ -12,7 +12,8 @@
     },
     "resolveJsonModule": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      "vite-plugin-svg-icons/client"
     ],
     "strict": true,
     "noUnusedLocals": true,

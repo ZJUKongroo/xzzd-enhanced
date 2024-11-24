@@ -31,9 +31,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@types/axios": "^0.14.4",
     "axios": "^1.7.7",
     "pinia": "^2.2.6",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {

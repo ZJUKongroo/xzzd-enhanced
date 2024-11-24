@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 
-import { dirname, relative } from 'node:path'
+import path, { dirname, relative } from 'node:path'
+
 import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
@@ -9,6 +10,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { isDev, port, r } from './scripts/utils'
 import packageJson from './package.json'
 
@@ -37,6 +39,12 @@ export const sharedConfig: UserConfig = {
         },
       ],
       dts: r('src/auto-imports.d.ts'),
+    }),
+    createSvgIconsPlugin({
+      iconDirs: [
+        path.resolve(__dirname, 'src/assets/svgs'),
+      ],
+      symbolId: 'icon-[name]',
     }),
 
     // https://github.com/antfu/unplugin-vue-components
