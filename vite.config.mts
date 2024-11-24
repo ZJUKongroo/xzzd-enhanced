@@ -17,6 +17,7 @@ export const sharedConfig: UserConfig = {
   resolve: {
     alias: {
       '~/': `${r('src')}/`,
+      '@': `${r('src')}`,
     },
   },
   define: {

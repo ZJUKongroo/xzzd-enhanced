@@ -40,15 +40,18 @@ export async function getManifest() {
       'activeTab',
       'sidePanel',
     ],
-    host_permissions: ['*://*/*'],
+    host_permissions: ['*://courses.zju.edu.cn/user/*'],
     content_scripts: [
       {
         matches: [
-          '<all_urls>',
+          '*://courses.zju.edu.cn/user/*',
         ],
         js: [
           'dist/contentScripts/index.global.js',
         ],
+        run_at: 'document_start',
+        match_about_blank: true,
+        all_frames: true,
       },
     ],
     web_accessible_resources: [

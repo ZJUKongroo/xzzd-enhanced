@@ -1,0 +1,3 @@
+<template>
+  course
+</template>
