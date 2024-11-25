@@ -32,7 +32,7 @@ import menu from '~/assets/menu.svg'
   height: 100%;
   width: 40px;
   background-color: var(--xzzd-bg-color-alpha);
-  border: solid 1px var(--xzzd-border-color);
+  border-right: solid 1px var(--xzzd-border-color);
   transition: .5s;
   overflow: hidden;
 }
@@ -47,7 +47,9 @@ import menu from '~/assets/menu.svg'
   backdrop-filter: blur(30px);
 }
 .app-main{
-  width: calc(100% - 40px);
+  width: 100%;
+  padding: 10px;
   height: 100%;
+  overflow: auto;
 }
 </style>

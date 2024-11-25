@@ -14,4 +14,5 @@ extension/manifest.json
 node_modules
 src/auto-imports.d.ts
 src/components.d.ts
+src/example@api/
 .eslintcache
