@@ -7,7 +7,7 @@ const todo_list = ref<TODO_LIST> ({
 })
 
 onBeforeMount(() => {
-  axios.get('/todos?no-intercept=true').then((res) => {
+  axios.get('/api/todos?no-intercept=true').then((res) => {
     todo_list.value = JSON.parse(res.data) as TODO_LIST
   })
 })
@@ -44,7 +44,8 @@ function openUrl(todo: TODO) {
     border: solid 1px var(--xzzd-border-color);
     border-radius: 10px;
     padding: 6px;
-    width: 100%;
+    width: calc(100% - 12px);
+    margin: 6px;
 }
 .todolist-header{
     font-weight: 600;

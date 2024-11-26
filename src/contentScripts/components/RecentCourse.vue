@@ -7,7 +7,7 @@ const course_list = ref<RECENT_COURSE> ({
 })
 
 onBeforeMount(() => {
-  axios.get('/user/recently-visited-courses').then((res) => {
+  axios.get('/api/user/recently-visited-courses').then((res) => {
     course_list.value = JSON.parse(res.data) as RECENT_COURSE
   })
 })
@@ -47,7 +47,8 @@ function openUrl(course: COURSE) {
     border: solid 1px var(--xzzd-border-color);
     border-radius: 10px;
     padding: 6px;
-    width: 100%;
+    width: calc(100% - 12px);
+    margin: 6px;
 }
 .recent-course-header{
     font-weight: 600;

@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import TodoList from '../components/TodoList.vue'
 import RecentCourse from '../components/RecentCourse.vue'
+import NotifiCation from '../components/NotifiCation.vue'
 </script>
 
 <template>
   <div class="home-container">
     <div class="home-main">
-      <div />
+      <NotifiCation />
     </div>
     <div class="home-sidebar">
       <RecentCourse />
@@ -26,8 +27,5 @@ import RecentCourse from '../components/RecentCourse.vue'
 }
 .home-sidebar{
   width: 40%;
-}
-.hone-sidebar>*{
-  margin-bottom: 15px;
 }
 </style>
