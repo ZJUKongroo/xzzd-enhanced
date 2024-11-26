@@ -13,6 +13,7 @@ html{
   --xzzd-text-color:#2c2c2c;
   --xzzd-button-hover:#1d1d1d2a;
   --xzzd-button-active:#1d1d1d4f;
+  --xzzd-text-color:#1d1d1d;
 }
 #app{
   margin: 0;

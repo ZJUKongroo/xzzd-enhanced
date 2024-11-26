@@ -24,7 +24,7 @@ function openRoute(path: string) {
 <template>
   <div class="sidebar-cell-wrapper" @click="openRoute(path)">
     <div class="sidebar-cell-icon">
-      <img :src="icon">
+      <img :src="icon" style="color: var(--xzzd-text-color);">
     </div>
     <div class="sidebar-cell-text">
       {{ name }}

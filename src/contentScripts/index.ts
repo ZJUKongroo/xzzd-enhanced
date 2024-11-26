@@ -21,13 +21,18 @@ import '~/styles/index'
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
 (() => {
   console.info('[vitesse-webext] Hello world from content script')
-
+  router.beforeEach((to, _, next) => {
+    if (to.meta.title) {
+      document.title = to.meta.title as string
+    }
+    next()
+  })
   // communication example: send previous tab title from background page
   onMessage('tab-prev', ({ data }) => {
     console.log(`[vitesse-webext] Navigate from page "${data.title}"`)
   })
   document.open()
-  document.write('<!DOCTYPE html><head><title>1</title></head><body></body>')
+  document.write('<!DOCTYPE html><head></head><body></body>')
   document.close()
 
   // mount component to context window

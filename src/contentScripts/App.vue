@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import SidebarCell from './components/SidebarCell.vue'
 import menu from '~/assets/menu.svg'
+import home from '~/assets/home-filling.svg'
 </script>
 
 <template>
   <div class="app-container">
     <div class="app-sidebar-container">
       <div class="app-sidebar">
-        <SidebarCell name="Home" path="/user/index" :icon="menu" />
+        <SidebarCell name="Home" path="/user/index" :icon="home" />
         <SidebarCell name="Course" path="/user/course" :icon="menu" />
       </div>
     </div>

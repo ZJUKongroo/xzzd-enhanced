@@ -8,10 +8,16 @@ export default createRouter({
     children: [{
       path: 'course',
       name: 'course',
+      meta: {
+        title: '课程',
+      },
       component: () => import('../views/CourseView.vue'),
     }, {
       path: 'index',
       name: 'home',
+      meta: {
+        title: '主页',
+      },
       component: () => import('../views/HomeView.vue'),
     }],
   }],
