@@ -6,14 +6,22 @@ const ntf = ref<NOTIFICATIONS> ({
   unread_count: 0,
   notifications: [],
 })
+const limit = 10
+let offset = 0
 // 动态导入 TopicCreate 组件，返回一个 Promise，加载对应的 Vue 组件。
 const topic_create = defineAsyncComponent(() => import('./ntf/TopicCreate.vue'))
 const homework_opened_for_submission = defineAsyncComponent(() => import('./ntf/HomeworkOpened.vue'))
+const activity_expiring = defineAsyncComponent(() => import('./ntf/ActivityExpiring.vue'))
+const activity_opened = defineAsyncComponent(() => import('./ntf/ActivityOpened.vue'))
+const has_recommend_homework = defineAsyncComponent(() => import('./ntf/HasRecommend.vue'))
 
 // 定义一个组件映射表，键为组件名称（字符串），值为动态导入的 Promise 对象。
 const component_map: { [key: string]: typeof topic_create } = {
   topic_create,
   homework_opened_for_submission,
+  activity_expiring,
+  has_recommend_homework,
+  activity_opened,
 }
 
 /**
@@ -25,7 +33,11 @@ function getComponent(index: string) {
   return component_map[index]
 }
 
-onBeforeMount(async () => {
+onBeforeMount(() => {
+  getNotification()
+})
+
+async function getNotification() {
   let userId = localStorage.getItem('userId')
   if (!userId) {
     const findReg = /(?<=<span[^>]*\sid="userId"[^>]*\sdata-id=")[^"]+(?=")/g
@@ -37,11 +49,16 @@ onBeforeMount(async () => {
     }
   }
   if (userId) {
-    axios.get(`/ntf/users/${userId}/notifications?limit=5&additionalFields=unread_count&removed=only_mobile`).then((res) => {
-      ntf.value = JSON.parse(res.data) as NOTIFICATIONS
-    })
+    const data = JSON.parse((await axios.get(`/ntf/users/${userId}/notifications?offset=${offset}&limit=${limit}&additionalFields=unread_count&removed=only_mobile`)).data) as NOTIFICATIONS
+    if (ntf.value.notifications.length === 0) {
+      ntf.value = data
+    }
+    else {
+      ntf.value.notifications = ntf.value.notifications.concat(data.notifications)
+    }
+    offset += limit
   }
-})
+}
 </script>
 
 <template>
@@ -54,6 +71,9 @@ onBeforeMount(async () => {
     </div>
     <div v-for="(notification, index) in ntf.notifications" :key="index" class="notification-cell">
       <component :is="getComponent(notification.type)" v-if="notification.type in component_map" :data="notification" />
+    </div>
+    <div class="notification-load" @click="getNotification">
+      加载通知
     </div>
   </div>
 </template>
@@ -82,5 +102,21 @@ onBeforeMount(async () => {
     border-radius: 8px;
     margin: 10px;
     padding: 9px;
+}
+.notification-load{
+  border: 1px solid var(--xzzd-border-color);
+  border-radius: 4px;
+  font-size: 17px;
+  transition: .3s;
+  margin-left: 10px;
+  width: 100px;
+  text-align: center;
+}
+.notification-load:hover{
+  cursor: pointer;
+  background-color: var(--xzzd-button-hover);
+}
+.notification-load:active{
+  background-color: var(--xzzd-button-active);
 }
 </style>
