@@ -49,8 +49,8 @@ import home from '~/assets/home-filling.svg'
 }
 .app-main{
   width: 100%;
-  padding: 10px;
+  /* padding: 10px; */
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
 }
 </style>

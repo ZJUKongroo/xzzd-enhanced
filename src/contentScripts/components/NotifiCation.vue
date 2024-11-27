@@ -14,6 +14,8 @@ const homework_opened_for_submission = defineAsyncComponent(() => import('./ntf/
 const activity_expiring = defineAsyncComponent(() => import('./ntf/ActivityExpiring.vue'))
 const activity_opened = defineAsyncComponent(() => import('./ntf/ActivityOpened.vue'))
 const has_recommend_homework = defineAsyncComponent(() => import('./ntf/HasRecommend.vue'))
+const default_nftc = defineAsyncComponent(() => import('./ntf/DefaultNtfc.vue'))
+const homework_is_recommended = defineAsyncComponent(() => import('./ntf/WasRecommend.vue'))
 
 // 定义一个组件映射表，键为组件名称（字符串），值为动态导入的 Promise 对象。
 const component_map: { [key: string]: typeof topic_create } = {
@@ -22,6 +24,7 @@ const component_map: { [key: string]: typeof topic_create } = {
   activity_expiring,
   has_recommend_homework,
   activity_opened,
+  homework_is_recommended,
 }
 
 /**
@@ -30,7 +33,12 @@ const component_map: { [key: string]: typeof topic_create } = {
  * @returns 如果找到对应组件，则返回其动态导入的 Promise，否则返回 undefined。
  */
 function getComponent(index: string) {
-  return component_map[index]
+  if (index in component_map) {
+    return component_map[index]
+  }
+  else {
+    return default_nftc
+  }
 }
 
 onBeforeMount(() => {
@@ -59,6 +67,8 @@ async function getNotification() {
     offset += limit
   }
 }
+
+defineExpose({ getNotification })
 </script>
 
 <template>
@@ -70,7 +80,7 @@ async function getNotification() {
       未读通知: {{ Math.floor(ntf.unread_count) }}
     </div>
     <div v-for="(notification, index) in ntf.notifications" :key="index" class="notification-cell">
-      <component :is="getComponent(notification.type)" v-if="notification.type in component_map" :data="notification" />
+      <component :is="getComponent(notification.type)" :data="notification" />
     </div>
     <div class="notification-load" @click="getNotification">
       加载通知

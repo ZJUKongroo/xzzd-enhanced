@@ -51,6 +51,9 @@ declare global{
     inter_score_submission: boolean
     submission_id: number
   }
+  export interface HOMEWORK_IS_RECOMMENDED extends HOMEWORK {
+    submission_id: number
+  }
   export interface HOMEWORK_OPENED_FOR_SUBMISSION extends HOMEWORK {
     start_time: string
     submit_time: string

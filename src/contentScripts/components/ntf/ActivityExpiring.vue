@@ -10,6 +10,18 @@ const props = defineProps({
   },
 })
 
+function toFileSizeString(fileSize: number) {
+  if (fileSize < 1024) {
+    return `${fileSize} B`
+  }
+  else if (fileSize < 1048576) {
+    return `${(fileSize / 1024).toPrecision(3)} KB`
+  }
+  else {
+    return `${(fileSize / 1048576).toPrecision(3)} MB`
+  }
+}
+
 const payload = ref<ACTIVITY_EXPIRING>(props.data.payload as ACTIVITY_EXPIRING)
 </script>
 
@@ -33,7 +45,7 @@ const payload = ref<ACTIVITY_EXPIRING>(props.data.payload as ACTIVITY_EXPIRING)
       </div>
     </div>
     <div class="activity-expiring-size">
-      {{ file.file_size / 1024 }} KB
+      {{ toFileSizeString(file.file_size) }}
     </div>
   </div>
 </template>

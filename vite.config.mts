@@ -10,6 +10,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { isDev, port, r } from './scripts/utils'
 import packageJson from './package.json'
 
@@ -38,6 +39,7 @@ export const sharedConfig: UserConfig = {
         },
       ],
       dts: r('src/auto-imports.d.ts'),
+      resolvers: [ElementPlusResolver()],
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -50,6 +52,7 @@ export const sharedConfig: UserConfig = {
         IconsResolver({
           prefix: '',
         }),
+        ElementPlusResolver(),
       ],
     }),
 
