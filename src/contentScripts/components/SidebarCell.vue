@@ -6,28 +6,24 @@ defineProps({
     type: String,
     required: true,
   },
-  icon: {
-    type: String,
-    required: true,
-  },
   path: {
     type: String,
-    required: true,
   },
 })
 const router = useRouter()
-function openRoute(path: string) {
-  router.push(path)
+function openRoute(path: string | undefined) {
+  if (path)
+    router.push(path)
 }
 </script>
 
 <template>
   <div class="sidebar-cell-wrapper" @click="openRoute(path)">
     <div class="sidebar-cell-icon">
-      <img :src="icon" style="color: var(--xzzd-text-color);">
+      <slot name="icon" />
     </div>
     <div class="sidebar-cell-text">
-      {{ name }}
+      {{ $t(`message.${name}`) }}
     </div>
   </div>
 </template>
@@ -51,10 +47,12 @@ function openRoute(path: string) {
     height: 24px;
     width: 24px;
     margin: 8px;
+    color: var(--xzzd-text-color);
 }
 .sidebar-cell-text{
     width: 80px;
     height: fit-content;
     font-size: 13px;
+    color: var(--xzzd-text-color)
 }
 </style>

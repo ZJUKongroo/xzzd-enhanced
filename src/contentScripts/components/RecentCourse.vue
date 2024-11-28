@@ -20,7 +20,7 @@ function openUrl(course: COURSE) {
 <template>
   <div class="recent-course-container">
     <div class="recent-course-header">
-      最近访问
+      {{ $t("message.recent_course") }}
     </div>
     <div
       v-for="(course, index) in course_list.visited_courses" :key="index" :style="{
@@ -49,6 +49,7 @@ function openUrl(course: COURSE) {
     padding: 6px;
     width: calc(100% - 12px);
     margin: 6px;
+    color: var(--xzzd-text-color)
 }
 .recent-course-header{
     font-weight: 600;

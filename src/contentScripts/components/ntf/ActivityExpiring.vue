@@ -28,14 +28,14 @@ const payload = ref<ACTIVITY_EXPIRING>(props.data.payload as ACTIVITY_EXPIRING)
 <template>
   <div class="ntfc-header">
     <div class="ntfc-header-title">
-      学习活动截止
+      {{ $t("message.activity_expiring") }}
     </div>
     <div class="ntfc-header-time">
       {{ (new Date(props.data.timestamp)).toLocaleString() }}
     </div>
   </div>
   <div class="ntfc-title">
-    课程 <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a> 的学习活动 <a class="ntfc-link" @click="openActivity(payload.course_id, payload.activity_id)">{{ payload.activity_title }}</a> 即将截止
+    {{ $t("ntf.activity_expiring.0") }}<a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a>{{ $t("ntf.activity_expiring.1") }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.activity_id)">{{ payload.activity_title }}</a>{{ $t("ntf.activity_expiring.2") }}
   </div>
   <div v-for="(file, index) in payload.uploads" :key="index" class="ntfc-main" style="cursor: pointer;" @click="openFile(payload.activity_id, file.reference_id)">
     <div class="activity-expiring-title">

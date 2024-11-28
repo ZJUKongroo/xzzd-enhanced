@@ -5,6 +5,8 @@ import App from './App.vue'
 import router from './router'
 import { setupApp } from '~/logic/common-setup'
 import '~/styles/index'
+import { useDark } from '~/composables/useDark'
+import { i18n } from '~/composables/useI18n'
 
 // function onDOMLoaded() {
 //   document.body.innerHTML = ''
@@ -20,7 +22,6 @@ import '~/styles/index'
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
 (() => {
-  console.info('[vitesse-webext] Hello world from content script')
   router.beforeEach((to, _, next) => {
     if (to.meta.title) {
       document.title = to.meta.title as string
@@ -48,7 +49,9 @@ import '~/styles/index'
   document.body.appendChild(root)
   document.body.appendChild(container)
   const app = createApp(App)
+  useDark()
   setupApp(app)
   app.use(router)
+  app.use(i18n)
   app.mount(root)
 })()

@@ -74,16 +74,16 @@ defineExpose({ getNotification })
 <template>
   <div class="notification-container">
     <div class="notification-header">
-      通知
+      {{ $t("message.notification_title") }}
     </div>
     <div class="notification-unread">
-      未读通知: {{ Math.floor(ntf.unread_count) }}
+      {{ $t("message.notification_unread") }} {{ Math.floor(ntf.unread_count) }}
     </div>
     <div v-for="(notification, index) in ntf.notifications" :key="index" class="notification-cell">
       <component :is="getComponent(notification.type)" :data="notification" />
     </div>
     <div class="notification-load" @click="getNotification">
-      加载通知
+      {{ $t("message.notification_load") }}
     </div>
   </div>
 </template>
@@ -95,6 +95,7 @@ defineExpose({ getNotification })
     padding: 6px;
     width: calc(100% - 12px);
     margin: 6px;
+    color: var(--xzzd-text-color)
 }
 .notification-header{
     font-weight: 600;

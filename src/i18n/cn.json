@@ -1,0 +1,30 @@
+{
+  "message": {
+    "course": "课程",
+    "home": "主页",
+    "activity_expiring": "学习活动截止",
+    "activity_opened": "学习活动发布",
+    "has_recommended": "作业推荐",
+    "copy": "复制",
+    "homework_opened": "作业发布",
+    "topic_create": "新帖子",
+    "was_recommended": "作业被推荐",
+    "notification_title": "通知",
+    "notification_unread": "未读通知: ",
+    "notification_load": "加载通知",
+    "recent_course": "最近访问",
+    "settings": "设置",
+    "todo": "待办事项",
+    "todo_endtime": "截止日期: ",
+    "todo_type_homework": "作业"
+  },
+  "ntf": {
+    "activity_expiring": ["课程 ", " 的学习活动 ", " 即将截止"],
+    "activity_opened": ["课程 ", " 的学习活动 ", " 已开始"],
+    "has_recommended": ["课程 ", " 的作业 ", " 得到了老师推荐"],
+    "default_ntfc": ["原始内容: ", "这个组件还未完成，点击", "并发给开发者帮助开发进度"],
+    "homework_opened": ["课程 ", " 的作业 ", " 已开始"],
+    "topic_create": ["在课程 ", " 的讨论区 ", " 发布了新帖子"],
+    "was_recommended": ["你在课程 ", " 中的作业 ", " 得到了老师推荐"]
+  }
+}

@@ -13,8 +13,16 @@ html{
   --xzzd-text-color:#2c2c2c;
   --xzzd-button-hover:#1d1d1d2a;
   --xzzd-button-active:#1d1d1d4f;
-  --xzzd-text-color:#1d1d1d;
   --xzzd-link-color:#0fbbff;
+}
+html.dark{
+  --xzzd-border-color:rgb(105, 105, 105);
+  --xzzd-bg-color-alpha:#111111aa;
+  --xzzd-bg-color-solid:#171717;
+  --xzzd-text-color:#e8e8e8;
+  --xzzd-button-hover:#a9a9a92a;
+  --xzzd-button-active:#b3b3b34f;
+  --xzzd-link-color:#0b5d7e;
 }
 #app{
   margin: 0;

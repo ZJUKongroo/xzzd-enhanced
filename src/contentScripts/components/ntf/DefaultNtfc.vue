@@ -26,12 +26,12 @@ function copyMessage() {
     {{ (new Date(props.data.timestamp)).toLocaleString() }}
   </div>
   <div class="ntfc-defaut-content">
-    原始内容: {{ payload }} <br>
+    {{ $t("ntf.default_ntfc.0") }} {{ payload }} <br>
   </div>
   <div class="ntfc-defaut-banner">
-    这个组件还未完成，点击<span class="ntfc-default-button" @click="copyMessage">
-      复制
-    </span>并发给开发者帮助开发进度
+    {{ $t("ntf.default_ntfc.1") }}<span class="ntfc-default-button" @click="copyMessage">
+      {{ $t("message.copy") }}
+    </span>{{ $t("ntf.default_ntfc.2") }}
   </div>
 </template>
 

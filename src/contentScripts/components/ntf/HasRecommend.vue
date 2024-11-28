@@ -16,14 +16,14 @@ const payload = ref<HAS_RECOMMEND_HOMEWORK>(props.data.payload as HAS_RECOMMEND_
 <template>
   <div class="ntfc-header">
     <div class="ntfc-header-title">
-      作业推荐
+      {{ $t('message.has_recommended') }}
     </div>
     <div class="ntfc-header-time">
       {{ (new Date(props.data.timestamp)).toLocaleString() }}
     </div>
   </div>
   <div class="ntfc-title">
-    课程 <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a> 的作业 <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{ payload.homework_title }}</a> 得到了老师推荐
+    {{ $t("ntf.has_recommended.0") }} <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a> {{ $t("ntf.has_recommended.1") }} <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{ payload.homework_title }}</a> {{ $t("ntf.has_recommended.2") }}
   </div>
 </template>
 

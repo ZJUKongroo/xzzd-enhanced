@@ -20,20 +20,20 @@ function openUrl(todo: TODO) {
 <template>
   <div class="todolist-container">
     <div class="todolist-header">
-      待办事项
+      {{ $t("message.todo") }}
     </div>
     <div v-for="(todo, index) in todo_list.todo_list" :key="index" class="todolist-cell" @click="openUrl(todo)">
       <div class="todolist-cell-name">
         {{ todo.course_name }}
         <div class="todolist-cell-type">
-          {{ todo.type }}
+          {{ $t(`message.todo_type_${todo.type}`) }}
         </div>
       </div>
       <div class="todolist-cell-title">
         {{ todo.title }}
       </div>
       <div class="todolist-cell-endtime">
-        截止日期: {{ (new Date(todo.end_time)).toLocaleString() }}
+        {{ $t("message.todo_endtime") }} {{ (new Date(todo.end_time)).toLocaleString() }}
       </div>
     </div>
   </div>
@@ -46,6 +46,7 @@ function openUrl(todo: TODO) {
     padding: 6px;
     width: calc(100% - 12px);
     margin: 6px;
+    color: var(--xzzd-text-color)
 }
 .todolist-header{
     font-weight: 600;

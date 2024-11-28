@@ -16,14 +16,19 @@ const payload = ref<HOMEWORK_IS_RECOMMENDED>(props.data.payload as HOMEWORK_IS_R
 <template>
   <div class="ntfc-header">
     <div class="ntfc-header-title">
-      作业被推荐
+      {{ $t('message.was_recommended') }}
     </div>
     <div class="ntfc-header-time">
       {{ (new Date(props.data.timestamp)).toLocaleString() }}
     </div>
   </div>
   <div class="ntfc-title">
-    你在课程 <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a> 中的作业 <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{ payload.homework_title }}</a> 得到了老师推荐
+    <template v-if="$i18n.locale === 'en'">
+      {{ $t("ntf.was_recommended.0") }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{ payload.homework_title }}</a>{{ $t("ntf.was_recommended.1") }}<a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a>{{ $t("ntf.was_recommended.2") }}
+    </template>
+    <template v-else>
+      {{ $t("ntf.was_recommended.0") }} <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a> {{ $t("ntf.was_recommended.1") }} <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{ payload.homework_title }}</a> {{ $t("ntf.was_recommended.2") }}
+    </template>
   </div>
 </template>
 

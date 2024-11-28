@@ -49,10 +49,10 @@ export const sharedConfig: UserConfig = {
       dts: r('src/components.d.ts'),
       resolvers: [
         // auto import icons
+        ElementPlusResolver(),
         IconsResolver({
           prefix: '',
         }),
-        ElementPlusResolver(),
       ],
     }),
 

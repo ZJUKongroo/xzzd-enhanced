@@ -1,0 +1,35 @@
+@keyframes cui-dialog-appear {
+    0% {
+        /* opacity: 0%; */
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    100% {
+        /* opacity: 100%; */
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes cui-dialog-disappear {
+    0% {
+        opacity: 100%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0%;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}
+
+@keyframes cui-dialog-blur {
+    0% {
+        opacity: 0%;
+        /* backdrop-filter: blur(0px); */
+    }
+
+    100% {
+        opacity: 100%;
+        /* backdrop-filter: blur(10px); */
+    }
+}

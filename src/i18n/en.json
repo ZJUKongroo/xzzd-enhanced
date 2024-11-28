@@ -1,0 +1,30 @@
+{
+  "message": {
+    "course": "Course",
+    "home": "Home",
+    "activity_expiring": "Activity Expiring",
+    "activity_opened": "Activity Opened",
+    "has_recommended": "Has Homework Recommended",
+    "copy": "copy",
+    "homework_opened": "Homework Opened",
+    "topic_create": "New Post",
+    "was_recommended": "Your Homework Was Recommended",
+    "notification_title": "Notification",
+    "notification_unread": "Unread notification: ",
+    "notification_load": "Load notification",
+    "recent_course": "Recent Course",
+    "settings": "Settings",
+    "todo": "Todo",
+    "todo_endtime": "Deadline: ",
+    "todo_type_homework": "Homework"
+  },
+  "ntf": {
+    "activity_opened": ["Course ", "'s learning activity ", " has opened."],
+    "activity_expiring": ["Course ", "'s learning activity ", " is expiring."],
+    "has_recommended": ["Course ", "'s homework ", " was recommended by instructor."],
+    "default_ntfc": ["Original Content: ", "This component has not completed yet. Click", "and send to developer to help developing progress"],
+    "homework_opened": ["Course ", "'s homework ", " has opened"],
+    "topic_create": [" published a new post in course ", "'s discussion area ", "."],
+    "was_recommended": ["Your homework ", " in course ", "was recommended."]
+  }
+}

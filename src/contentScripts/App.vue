@@ -1,20 +1,45 @@
 <script setup lang="ts">
 import SidebarCell from './components/SidebarCell.vue'
-import menu from '~/assets/menu.svg'
-import home from '~/assets/home-filling.svg'
+import SettingsList from './components/SettingsList.vue'
+import AntDesignHomeFilled from '~icons/ant-design/home-filled'
+import AntDesignUnorderedList from '~icons/ant-design/unordered-list'
+import AntDesignSettingFilled from '~icons/ant-design/setting-filled'
+
+const settingsVisible = ref(false)
+function openSettings() {
+  settingsVisible.value = true
+}
 </script>
 
 <template>
   <div class="app-container">
     <div class="app-sidebar-container">
       <div class="app-sidebar">
-        <SidebarCell name="Home" path="/user/index" :icon="home" />
-        <SidebarCell name="Course" path="/user/course" :icon="menu" />
+        <SidebarCell name="home" path="/user/index">
+          <template #icon>
+            <AntDesignHomeFilled />
+          </template>
+        </SidebarCell>
+        <SidebarCell name="course" path="/user/course">
+          <template #icon>
+            <AntDesignUnorderedList />
+          </template>
+        </SidebarCell>
+        <SidebarCell name="settings" @click="openSettings">
+          <template #icon>
+            <AntDesignSettingFilled />
+          </template>
+        </SidebarCell>
       </div>
     </div>
     <div class="app-main">
       <RouterView />
     </div>
+    <CDialog v-model:visible="settingsVisible">
+      <template #content>
+        <SettingsList />
+      </template>
+    </CDialog>
   </div>
 </template>
 
@@ -24,6 +49,7 @@ import home from '~/assets/home-filling.svg'
   height: 100%;
   display: flex;
   flex-direction: row;
+  background-color: var(--xzzd-bg-color-solid);
 }
 .app-sidebar-container{
   height: 100%;
