@@ -16,7 +16,11 @@
     "settings": "Settings",
     "todo": "Todo",
     "todo_endtime": "Deadline: ",
-    "todo_type_homework": "Homework"
+    "todo_type_homework": "Homework",
+    "lesson_start": "Start at ",
+    "course_class": "Class: ",
+    "course_instructor": "Instructors: ",
+    "select_prefer_language": "Select language"
   },
   "ntf": {
     "activity_opened": ["Course ", "'s learning activity ", " has opened."],

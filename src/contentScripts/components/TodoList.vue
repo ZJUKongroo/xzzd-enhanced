@@ -29,7 +29,7 @@ function openUrl(todo: TODO) {
           {{ $t(`message.todo_type_${todo.type}`) }}
         </div>
       </div>
-      <div class="todolist-cell-title">
+      <div class="todolist-cell-title ellipsis-text">
         {{ todo.title }}
       </div>
       <div class="todolist-cell-endtime">

@@ -7,6 +7,7 @@ import { setupApp } from '~/logic/common-setup'
 import '~/styles/index'
 import { useDark } from '~/composables/useDark'
 import { i18n } from '~/composables/useI18n'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 // function onDOMLoaded() {
 //   document.body.innerHTML = ''

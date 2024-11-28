@@ -16,7 +16,11 @@
     "settings": "设置",
     "todo": "待办事项",
     "todo_endtime": "截止日期: ",
-    "todo_type_homework": "作业"
+    "todo_type_homework": "作业",
+    "lesson_start": "开课",
+    "course_class": "授课班级: ",
+    "course_instructor": "授课教师: ",
+    "select_prefer_language": "选择语言"
   },
   "ntf": {
     "activity_expiring": ["课程 ", " 的学习活动 ", " 即将截止"],

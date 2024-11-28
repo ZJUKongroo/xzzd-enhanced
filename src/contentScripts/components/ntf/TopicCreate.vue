@@ -40,6 +40,7 @@ const payload = ref<TOPIC_CREATE>(props.data.payload as TOPIC_CREATE)
 }
 .topic-create-main-content{
     font-size: 13px;
-    color: var(--xzzd-text-color)
+    color: var(--xzzd-text-color);
+    overflow: hidden;
 }
 </style>

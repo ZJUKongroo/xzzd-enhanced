@@ -27,14 +27,14 @@ function openUrl(course: COURSE) {
         backgroundImage: `url(${course.cover})`,
       }" class="recent-course-cell" @click="openUrl(course)"
     >
-      <div class="recent-course-cell-wrapper">
+      <div class="recent-course-cell-wrapper ellipsis-text">
         <div class="recent-course-cell-name">
           {{ course.name }}
         </div>
-        <div class="recent-course-cell-department">
+        <div class="recent-course-cell-department ellipsis-text">
           {{ course.department.name }}
         </div>
-        <div class="recent-course-cell-class">
+        <div class="recent-course-cell-class ellipsis-text">
           {{ course.course_attributes.teaching_class_name }}
         </div>
       </div>

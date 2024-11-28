@@ -5,6 +5,7 @@ import enMsg from '~/i18n/en.json'
 const prefered_locale = localStorage.getItem('locale')
 
 export const i18n = createI18n({
+  legacy: false,
   locale: prefered_locale || 'cn',
   fallbackLocale: 'cn',
   messages: {

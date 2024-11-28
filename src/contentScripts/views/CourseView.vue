@@ -32,7 +32,7 @@ async function getCourse(page: number, page_size: number) {
       fields,
       showScorePassedStatus: false,
       page,
-      pageSize: page_size,
+      page_size,
     },
   })).data) as MY_COURSE
   courses.value = res
@@ -46,16 +46,40 @@ onBeforeMount(() => {
 
 <template>
   <div class="course-container">
-    <CourseCell v-for="(course, index) in courses.courses" :key="index" :data="course" />
-    <el-pagination
-      v-model:current-page="currentPage"
-      v-model:page-size="pageSize"
-      :page-sizes="[10, 20, 30]"
-      :background="true"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+    <div class="course-cell-wrapper">
+      <CourseCell v-for="(course, index) in courses.courses" :key="index" :data="course" />
+    </div>
+    <div class="course-footer">
+      <el-pagination
+        v-model:current-page="currentPage"
+        v-model:page-size="pageSize"
+        :page-sizes="[10, 20, 30]"
+        :background="true"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </div>
   </div>
 </template>
+
+<style>
+.course-container{
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden auto;
+}
+.course-cell-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.course-footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+</style>
