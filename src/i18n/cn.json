@@ -20,7 +20,8 @@
     "lesson_start": "开课",
     "course_class": "授课班级: ",
     "course_instructor": "授课教师: ",
-    "select_prefer_language": "选择语言"
+    "select_prefer_language": "选择语言",
+    "open_settings": "打开设置页面"
   },
   "ntf": {
     "activity_expiring": ["课程 ", " 的学习活动 ", " 即将截止"],
@@ -30,5 +31,8 @@
     "homework_opened": ["课程 ", " 的作业 ", " 已开始"],
     "topic_create": ["在课程 ", " 的讨论区 ", " 发布了新帖子"],
     "was_recommended": ["你在课程 ", " 中的作业 ", " 得到了老师推荐"]
+  },
+  "error": {
+    "no_login": "请先登录学在浙大"
   }
 }

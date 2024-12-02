@@ -5,24 +5,28 @@ import axios from '~/request'
 const todo_list = ref<TODO_LIST> ({
   todo_list: [],
 })
+const isLogin = ref(false)
+
+const sortedItem = computed(() => [...todo_list.value.todo_list].sort((x, y) => {
+  return (new Date(x.end_time)).getTime() - (new Date(y.end_time)).getTime()
+}))
 
 onBeforeMount(() => {
   axios.get('/api/todos?no-intercept=true').then((res) => {
-    todo_list.value = JSON.parse(res.data) as TODO_LIST
+    if (res.status >= 200 && res.status < 300) {
+      todo_list.value = JSON.parse(res.data) as TODO_LIST
+      isLogin.value = true
+    }
   })
 })
-
-function openUrl(todo: TODO) {
-  window.location.href = `/course/${todo.course_id}/learning-activity#/${todo.id}?&view=scores`
-}
 </script>
 
 <template>
-  <div class="todolist-container">
+  <div v-if="isLogin" class="todolist-container">
     <div class="todolist-header">
       {{ $t("message.todo") }}
     </div>
-    <div v-for="(todo, index) in todo_list.todo_list" :key="index" class="todolist-cell" @click="openUrl(todo)">
+    <a v-for="(todo, index) in sortedItem" :key="index" class="todolist-cell" :href="`https://courses.zju.edu.cn/course/${todo.course_id}/learning-activity#/${todo.id}?&view=scores`">
       <div class="todolist-cell-name">
         {{ todo.course_name }}
         <div class="todolist-cell-type">
@@ -35,7 +39,10 @@ function openUrl(todo: TODO) {
       <div class="todolist-cell-endtime">
         {{ $t("message.todo_endtime") }} {{ (new Date(todo.end_time)).toLocaleString() }}
       </div>
-    </div>
+    </a>
+  </div>
+  <div v-else>
+    {{ $t("error.no_login") }}
   </div>
 </template>
 
@@ -60,6 +67,7 @@ function openUrl(todo: TODO) {
     padding: 5px;
     margin: 10px;
     transition: .3s;
+    display: block;
 }
 .todolist-cell:hover{
     cursor: pointer;

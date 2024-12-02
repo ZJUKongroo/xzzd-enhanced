@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import TodoList from '../components/TodoList.vue'
 import RecentCourse from '../components/RecentCourse.vue'
 import NotifiCation from '../components/NotifiCation.vue'
+import TodoList from '~/components/TodoList.vue'
 
 const ntfRef = ref<InstanceType<typeof NotifiCation> | null>(null)
 </script>

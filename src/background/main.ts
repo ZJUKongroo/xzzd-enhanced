@@ -63,3 +63,7 @@ onMessage('get-current-tab', async () => {
     }
   }
 })
+
+onMessage('open-settings', () => {
+  browser.runtime.openOptionsPage()
+})

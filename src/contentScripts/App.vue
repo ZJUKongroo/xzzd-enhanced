@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { storage } from 'webextension-polyfill'
+import { sendMessage } from 'webext-bridge/content-script'
 import SidebarCell from './components/SidebarCell.vue'
-import SettingsList from './components/SettingsList.vue'
+import SettingsList from '~/components/SettingsList.vue'
 import AntDesignHomeFilled from '~icons/ant-design/home-filled'
 import AntDesignUnorderedList from '~icons/ant-design/unordered-list'
 import AntDesignSettingFilled from '~icons/ant-design/setting-filled'
@@ -14,6 +15,9 @@ function saveCookie() {
   if (document.cookie) {
     storage.local.set({ 'user-cookie': document.cookie })
   }
+}
+function openOptionsPage() {
+  sendMessage('open-settings', {}, 'background')
 }
 onMounted(() => saveCookie())
 </script>
@@ -45,6 +49,9 @@ onMounted(() => saveCookie())
     <CDialog v-model:visible="settingsVisible">
       <template #content>
         <SettingsList />
+        <el-button style="margin-top: 10px;" @click="openOptionsPage">
+          {{ $t("message.open_settings") }}
+        </el-button>
       </template>
     </CDialog>
   </div>

@@ -1,0 +1,19 @@
+.entry-left{
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+.entry-right{
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+.entry-up{
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.entry-down{
+    transform: translateY(-20px);
+    opacity: 0;
+}

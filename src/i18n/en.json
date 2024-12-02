@@ -20,7 +20,8 @@
     "lesson_start": "Start at ",
     "course_class": "Class: ",
     "course_instructor": "Instructors: ",
-    "select_prefer_language": "Select language"
+    "select_prefer_language": "Select language",
+    "open_settings": "Open Settings Page"
   },
   "ntf": {
     "activity_opened": ["Course ", "'s learning activity ", " has opened."],
@@ -30,5 +31,8 @@
     "homework_opened": ["Course ", "'s homework ", " has opened"],
     "topic_create": [" published a new post in course ", "'s discussion area ", "."],
     "was_recommended": ["Your homework ", " in course ", "was recommended."]
+  },
+  "error": {
+    "no_login": "Please login first."
   }
 }

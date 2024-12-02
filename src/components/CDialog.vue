@@ -1,73 +1,68 @@
-<script lang="ts">
-import { defineComponent, nextTick } from 'vue'
+<script lang="ts" setup>
+import { nextTick } from 'vue'
+import '~/styles/cui.css'
+import AntDesignCloseOutlined from '~icons/ant-design/close-outlined?width=1024px&height=1024px'
 
-export default defineComponent({
-  name: 'CDiaLog',
-  props: {
-    visible: {
-      type: Boolean,
-      default: false,
-    },
-    width: String,
-    height: String,
-  },
-  data() {
-    return {
-      visible_: false,
-    }
-  },
-  watch: {
-    visible(val, _) {
-      if (val) {
-        this.visible_ = true
-        nextTick(() => this.resize())
-      }
-      else {
-        const bg = this.$refs.bg as HTMLElement
-        if (bg)
-          bg.style.animation = 'cui-dialog-disappear .3s ease-in'
-        setTimeout(() => {
-          this.visible_ = false
-        }, 295)
-      }
-    },
-  },
-  mounted() {
-    if (this.visible)
-      nextTick(() => this.resize())
-  },
-  methods: {
-    handleClose() {
-      this.$emit('update:visible', false)
-    },
-    resize() {
-      const bg = this.$refs.bg as HTMLElement
-      if (bg) {
-        bg.style.width = this.width || '500px'
-        bg.style.height = this.height || '300px'
-      }
-    },
-  },
+const props = defineProps({
+  width: String,
+  height: String,
 })
+const bgRef = ref<HTMLDivElement | null>(null)
+
+const visible = defineModel<boolean>('visible', {
+  required: true,
+  type: Boolean,
+})
+
+const visible_ = ref(false)
+
+watch(visible, (val, _) => {
+  if (val) {
+    visible_.value = true
+    nextTick(() => resize())
+  }
+  else {
+    if (bgRef.value)
+      bgRef.value.style.animation = 'cui-dialog-disappear .3s ease-in'
+    setTimeout(() => {
+      visible_.value = false
+    }, 295)
+  }
+})
+
+onMounted(() => {
+  if (visible.value)
+    nextTick(() => resize())
+})
+
+function handleClose() {
+  visible.value = false
+}
+function resize() {
+  if (bgRef.value) {
+    bgRef.value.style.width = props.width || '500px'
+    bgRef.value.style.height = props.height || '300px'
+  }
+}
 </script>
 
 <template>
-  <div v-if="visible_" id="mask" @click.self="handleClose">
-    <div id="bg" ref="bg">
-      <div id="content">
+  <div v-if="visible_" class="cui-dialog-mask" @click.self="handleClose">
+    <div ref="bgRef" class="cui-dialog-bg">
+      <div class="cui-dialog-content">
         <slot name="content" />
       </div>
-      <div id="close" @click="handleClose">
+      <div class="cui-dialog-close" @click="handleClose">
         <el-icon :size="25">
-          <Close />
+          <AntDesignCloseOutlined />
         </el-icon>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-#mask {
+<style>
+.cui-dialog-mask {
     z-index: 500;
     position: absolute;
     top: 0;
@@ -78,7 +73,7 @@ export default defineComponent({
     animation: cui-dialog-blur .6s;
 }
 
-#bg {
+.cui-dialog-bg {
     position: absolute;
     width: 500px;
     height: 300px;
@@ -92,13 +87,13 @@ export default defineComponent({
     animation: cui-dialog-appear .6s cubic-bezier(0, 0.6, 0.2, 1.0);
 }
 
-#content {
+.cui-dialog-content {
     padding: 20px;
     height: calc(100% - 40px);
     overflow: auto;
 }
 
-#close {
+.cui-dialog-close {
     position: absolute;
     right: 0;
     top: 0;
