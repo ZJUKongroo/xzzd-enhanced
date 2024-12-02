@@ -1,7 +1,7 @@
 {
   "name": "xzzd-enhanced",
   "displayName": "XZZD Enhanced",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "packageManager": "pnpm@9.7.1",
   "description": "Improved UI for learning at ZJU home page",

@@ -22,4 +22,7 @@ function openOptionsPage() {
 .sidepanel-button{
     margin: 10px;
 }
+#app{
+  overflow: auto;
+}
 </style>
