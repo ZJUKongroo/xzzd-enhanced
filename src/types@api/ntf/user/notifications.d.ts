@@ -59,6 +59,11 @@ declare global{
     submit_time: string
     teaching_unit_type: string
   }
+  export interface HOMEWORK_EXPIRING_TODAY extends HOMEWORK {
+    end_time: string
+    submit_closed_time: string
+    teaching_unit_type: string
+  }
   interface UPLOAD {
     file_name: string
     file_size: number

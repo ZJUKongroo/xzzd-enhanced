@@ -1,26 +1,52 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import browser from 'webextension-polyfill/'
 import axios from '~/request'
 
 const todo_list = ref<TODO_LIST> ({
   todo_list: [],
 })
 const isLogin = ref(false)
-
 // the original list of todos is disordered, sortItem ensures the order of todos
 const sortedItem = computed(() => [...todo_list.value.todo_list].sort((x, y) => {
   return (new Date(x.end_time)).getTime() - (new Date(y.end_time)).getTime()
 }))
+// const requestTimeout = 5000
 
-onBeforeMount(() => {
-  axios.get('/api/todos?no-intercept=true').then((res) => {
-    // if response code isn't in the range, means cookie has been expired
-    if (res.status >= 200 && res.status < 300) {
-      todo_list.value = JSON.parse(res.data) as TODO_LIST
-      isLogin.value = true
+function isRunningInExtension() {
+  return browser.sidePanel
+}
+
+async function getTodos() {
+  let statusCode = await requestTodos()
+  if (isRunningInExtension()) {
+    if (statusCode < 500 && statusCode >= 300) {
+      window.open('https://courses.zju.edu.cn/user/index')
+      const interval = setInterval(async () => {
+        statusCode = await requestTodos()
+        if (statusCode < 300 && statusCode >= 200) {
+          clearInterval(interval)
+        }
+      }, 300)
+      // setTimeout(() => clearInterval(interval), requestTimeout)
     }
+  }
+}
+
+function requestTodos() {
+  return new Promise<number>((resolve, _) => {
+    axios.get('/api/todos?no-intercept=true').then((res) => {
+    // if response code isn't in the range, means cookie has been expired
+      if (res.status >= 200 && res.status < 300) {
+        todo_list.value = JSON.parse(res.data) as TODO_LIST
+        isLogin.value = true
+      }
+      resolve(res.status)
+    })
   })
-})
+}
+
+onBeforeMount(() => getTodos())
 </script>
 
 <template>

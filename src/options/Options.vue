@@ -13,4 +13,7 @@ import SettingsList from '~/components/SettingsList.vue'
 .options-main{
   padding: 20px;
 }
+#app{
+  overflow: auto;
+}
 </style>

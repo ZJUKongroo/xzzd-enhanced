@@ -21,7 +21,9 @@
     "course_class": "授课班级: ",
     "course_instructor": "授课教师: ",
     "select_prefer_language": "选择语言",
-    "open_settings": "打开设置页面"
+    "open_settings": "打开设置页面",
+    "homework_expiring_today": "作业今天截止",
+    "open_xzzd": "打开学在浙大"
   },
   "ntf": {
     "activity_expiring": ["课程 ", " 的学习活动 ", " 即将截止"],
@@ -29,6 +31,7 @@
     "has_recommended": ["课程 ", " 的作业 ", " 得到了老师推荐"],
     "default_ntfc": ["原始内容: ", "这个组件还未完成，点击", "并发给开发者帮助开发进度"],
     "homework_opened": ["课程 ", " 的作业 ", " 已开始"],
+    "homework_expiring_today": ["课程 ", " 的作业 ", " 今天 {time} 截止"],
     "topic_create": ["在课程 ", " 的讨论区 ", " 发布了新帖子"],
     "was_recommended": ["你在课程 ", " 中的作业 ", " 得到了老师推荐"]
   },

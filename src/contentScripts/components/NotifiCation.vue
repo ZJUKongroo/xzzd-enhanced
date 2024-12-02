@@ -18,6 +18,7 @@ const activity_opened = defineAsyncComponent(() => import('./ntf/ActivityOpened.
 const has_recommend_homework = defineAsyncComponent(() => import('./ntf/HasRecommend.vue'))
 const default_nftc = defineAsyncComponent(() => import('./ntf/DefaultNtfc.vue'))
 const homework_is_recommended = defineAsyncComponent(() => import('./ntf/WasRecommend.vue'))
+const homework_expiring_today = defineAsyncComponent(() => import('./ntf/HomeworkExpiringToday.vue'))
 
 // Define a component mapping table with keys as component names (strings) and values
 // as dynamically imported Promise objects.
@@ -28,6 +29,7 @@ const component_map: { [key: string]: typeof topic_create } = {
   has_recommend_homework,
   activity_opened,
   homework_is_recommended,
+  homework_expiring_today,
 }
 
 /**

@@ -21,7 +21,9 @@
     "course_class": "Class: ",
     "course_instructor": "Instructors: ",
     "select_prefer_language": "Select language",
-    "open_settings": "Open Settings Page"
+    "open_settings": "Open Settings Page",
+    "homework_expiring_today": "Homework Expiring Today",
+    "open_xzzd": "Open Learning in ZJU"
   },
   "ntf": {
     "activity_opened": ["Course ", "'s learning activity ", " has opened."],
@@ -29,6 +31,7 @@
     "has_recommended": ["Course ", "'s homework ", " was recommended by instructor."],
     "default_ntfc": ["Original Content: ", "This component has not completed yet. Click", "and send to developer to help developing progress"],
     "homework_opened": ["Course ", "'s homework ", " has opened"],
+    "homework_expiring_today": ["Course ", "'s homework ", " is expiring today at {time}"],
     "topic_create": [" published a new post in course ", "'s discussion area ", "."],
     "was_recommended": ["Your homework ", " in course ", "was recommended."]
   },
