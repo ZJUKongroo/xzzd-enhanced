@@ -5,6 +5,7 @@ import { storage } from 'webextension-polyfill'
 const i18n = useI18n()
 
 function locale_change() {
+  // use storage to remember user's language preference
   storage.local.set({ locale: i18n.locale.value })
 }
 </script>

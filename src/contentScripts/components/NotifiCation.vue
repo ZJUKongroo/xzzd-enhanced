@@ -8,7 +8,9 @@ const ntf = ref<NOTIFICATIONS> ({
 })
 const limit = 10
 let offset = 0
-// 动态导入 TopicCreate 组件，返回一个 Promise，加载对应的 Vue 组件。
+
+// Dynamically import the components,
+// returning a AsyncComponent instance that loads the corresponding Vue component.
 const topic_create = defineAsyncComponent(() => import('./ntf/TopicCreate.vue'))
 const homework_opened_for_submission = defineAsyncComponent(() => import('./ntf/HomeworkOpened.vue'))
 const activity_expiring = defineAsyncComponent(() => import('./ntf/ActivityExpiring.vue'))
@@ -17,7 +19,8 @@ const has_recommend_homework = defineAsyncComponent(() => import('./ntf/HasRecom
 const default_nftc = defineAsyncComponent(() => import('./ntf/DefaultNtfc.vue'))
 const homework_is_recommended = defineAsyncComponent(() => import('./ntf/WasRecommend.vue'))
 
-// 定义一个组件映射表，键为组件名称（字符串），值为动态导入的 Promise 对象。
+// Define a component mapping table with keys as component names (strings) and values
+// as dynamically imported Promise objects.
 const component_map: { [key: string]: typeof topic_create } = {
   topic_create,
   homework_opened_for_submission,
@@ -28,9 +31,9 @@ const component_map: { [key: string]: typeof topic_create } = {
 }
 
 /**
- * 根据组件名称从组件映射表中获取组件。
- * @param index - 组件名称的字符串索引，用于查找组件映射表中的对应值。
- * @returns 如果找到对应组件，则返回其动态导入的 Promise，否则返回 undefined。
+ * Gets the component from the component mapping table based on the component name.
+ * @param index - String index of the component name, used to find the corresponding value in the component mapping table.
+ * @returns Returns the dynamically imported Promise of the component if it is found, otherwise returns undefined.
  */
 function getComponent(index: string) {
   if (index in component_map) {
@@ -49,6 +52,8 @@ async function getNotification() {
   let userId = localStorage.getItem('userId')
   if (!userId) {
     const findReg = /(?<=<span[^>]*\sid="userId"[^>]*\sdata-id=")[^"]+(?=")/g
+    // part of learning of ZJU page is rendered by server, thus we need to get the original page.
+    // because it's time wasting, thus we store id in localstorage.
     const page: string = (await axios.get('/user/index')).data
     const result = page.match(findReg)
     if (result && result.length) {

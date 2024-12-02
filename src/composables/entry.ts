@@ -1,3 +1,4 @@
+// entry has multiple enter and leave transition effects
 import '~/styles/entry.css'
 
 const sep_time = 200

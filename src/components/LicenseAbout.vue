@@ -1,3 +1,4 @@
+<!-- Consist of about, license as well as credits -->
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { entry } from '~/composables/entry'

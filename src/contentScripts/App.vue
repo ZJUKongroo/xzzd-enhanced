@@ -3,19 +3,25 @@ import { storage } from 'webextension-polyfill'
 import { sendMessage } from 'webext-bridge/content-script'
 import SidebarCell from './components/SidebarCell.vue'
 import SettingsList from '~/components/SettingsList.vue'
+// Iconify icons
 import AntDesignHomeFilled from '~icons/ant-design/home-filled'
 import AntDesignUnorderedList from '~icons/ant-design/unordered-list'
 import AntDesignSettingFilled from '~icons/ant-design/setting-filled'
 
 const settingsVisible = ref(false)
+// Open settings page
 function openSettings() {
   settingsVisible.value = true
 }
+// Save user cookie for side panel to use
 function saveCookie() {
   if (document.cookie) {
+    // storage use chrome.storage to ensure the accessibility of datas
     storage.local.set({ 'user-cookie': document.cookie })
   }
 }
+// In content script, we can't directly access to plugin's runtime
+// We use message and open new page in background
 function openOptionsPage() {
   sendMessage('open-settings', {}, 'background')
 }

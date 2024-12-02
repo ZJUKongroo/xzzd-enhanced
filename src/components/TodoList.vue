@@ -7,12 +7,14 @@ const todo_list = ref<TODO_LIST> ({
 })
 const isLogin = ref(false)
 
+// the original list of todos is disordered, sortItem ensures the order of todos
 const sortedItem = computed(() => [...todo_list.value.todo_list].sort((x, y) => {
   return (new Date(x.end_time)).getTime() - (new Date(y.end_time)).getTime()
 }))
 
 onBeforeMount(() => {
   axios.get('/api/todos?no-intercept=true').then((res) => {
+    // if response code isn't in the range, means cookie has been expired
     if (res.status >= 200 && res.status < 300) {
       todo_list.value = JSON.parse(res.data) as TODO_LIST
       isLogin.value = true

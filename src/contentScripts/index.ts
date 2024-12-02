@@ -1,12 +1,8 @@
-/* eslint-disable no-console */
-import { onMessage } from 'webext-bridge/content-script'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { setupApp } from '~/logic/common-setup'
 import '~/styles/index'
-import { useDark } from '~/composables/useDark'
-import { i18n } from '~/composables/useI18n'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
@@ -17,10 +13,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
     }
     next()
   })
-  // communication example: send previous tab title from background page
-  onMessage('tab-prev', ({ data }) => {
-    console.log(`[vitesse-webext] Navigate from page "${data.title}"`)
-  })
+  // write a new document to replace the original document.
   document.open()
   document.write('<!DOCTYPE html><head></head><body></body>')
   document.close()
@@ -28,19 +21,21 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
   // mount component to context window
   const container = document.createElement('div')
   container.id = __NAME__
+  // create root element for us to mount
   const root = document.createElement('div')
   root.id = 'app'
+  // load stylesheet
   const styleEl = document.createElement('link')
-  // const shadowDOM = container.attachShadow?.({ mode: __DEV__ ? 'open' : 'closed' }) || container
   styleEl.setAttribute('rel', 'stylesheet')
   styleEl.setAttribute('href', browser.runtime.getURL('dist/contentScripts/style.css'))
   container.appendChild(styleEl)
   document.body.appendChild(root)
   document.body.appendChild(container)
+  // create vue app
   const app = createApp(App)
-  useDark()
+  // common setup
   setupApp(app)
+  // main page need specific vue-router instance for routing
   app.use(router)
-  app.use(i18n)
   app.mount(root)
 })()
