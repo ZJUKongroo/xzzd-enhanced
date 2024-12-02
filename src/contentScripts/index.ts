@@ -9,18 +9,6 @@ import { useDark } from '~/composables/useDark'
 import { i18n } from '~/composables/useI18n'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
-// function onDOMLoaded() {
-//   document.body.innerHTML = ''
-//   console.log(111)
-// }
-
-// if (document.readyState !== 'loading') {
-//   onDOMLoaded()
-// }
-// else {
-//   document.addEventListener('DOMContentLoaded', () => onDOMLoaded())
-// }
-
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
 (() => {
   router.beforeEach((to, _, next) => {

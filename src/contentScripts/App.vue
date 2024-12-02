@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { storage } from 'webextension-polyfill'
 import SidebarCell from './components/SidebarCell.vue'
 import SettingsList from './components/SettingsList.vue'
 import AntDesignHomeFilled from '~icons/ant-design/home-filled'
@@ -9,6 +10,12 @@ const settingsVisible = ref(false)
 function openSettings() {
   settingsVisible.value = true
 }
+function saveCookie() {
+  if (document.cookie) {
+    storage.local.set({ 'user-cookie': document.cookie })
+  }
+}
+onMounted(() => saveCookie())
 </script>
 
 <template>
