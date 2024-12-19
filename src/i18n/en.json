@@ -23,7 +23,11 @@
     "select_prefer_language": "Select language",
     "open_settings": "Open Settings Page",
     "homework_expiring_today": "Homework Expiring Today",
-    "open_xzzd": "Open Learning in ZJU"
+    "open_xzzd": "Open Learning in ZJU",
+    "exam_score_updated": "Exam Score Updated",
+    "exam_submit_started": "Exam Submission Started",
+    "exam_expiring": "Exam Expiring",
+    "exam_will_start": "Exam Will Start"
   },
   "ntf": {
     "activity_opened": ["Course ", "'s learning activity ", " has opened."],
@@ -33,7 +37,11 @@
     "homework_opened": ["Course ", "'s homework ", " has opened"],
     "homework_expiring_today": ["Course ", "'s homework ", " is expiring today at {time}"],
     "topic_create": [" published a new post in course ", "'s discussion area ", "."],
-    "was_recommended": ["Your homework ", " in course ", "was recommended."]
+    "was_recommended": ["Your homework ", " in course ", "was recommended."],
+    "exam_score_updated": ["Course ", "'s exam ", " score has been updated"],
+    "exam_submit_started": ["Course ", "'s exam ", " submission has started"],
+    "exam_expiring": ["Course ", "'s exam ", " is expiring"],
+    "exam_will_start": ["Course ", "'s exam ", " will start soon"]
   },
   "error": {
     "no_login": "Please login first."

@@ -6,7 +6,10 @@ declare global{
   }
   export interface NOTIFICATION {
     id: string
-    type: 'activity_expiring' | 'topic_create' | 'has_recommend_homework' | 'homework_opened_for_submission' | 'activity_opened' | string
+    type: 'activity_expiring' | 'topic_create' | 'has_recommend_homework' |
+    'homework_opened_for_submission' | 'homework_expiring_today' |
+    'exam_score_updated' | 'exam_submit_started' | 'exam_expiring' |
+    'exam_will_start' | string
     top: boolean
     timestamp: number
     payload: PAYLOAD
@@ -73,4 +76,25 @@ declare global{
     type: string
     videos: Array
   }
+  interface EXAM extends PAYLOAD {
+    activity_id: number
+    activity_type: string
+    exam_id: number
+    exam_title: string
+    start_time: string
+    end_time: string
+    teaching_unit_type: string
+  }
+  export interface EXAM_SCORE_UPDATED extends EXAM {
+    exam_score_id: number
+    is_updated: boolean
+    unique_flag: string
+    updated_time: string
+  }
+
+  export interface EXAM_SUBMIT_STARTED extends EXAM {}
+
+  export interface EXAM_EXPIRING extends EXAM {}
+
+  export interface EXAM_WILL_START extends EXAM {}
 }

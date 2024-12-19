@@ -19,6 +19,10 @@ const has_recommend_homework = defineAsyncComponent(() => import('./ntf/HasRecom
 const default_nftc = defineAsyncComponent(() => import('./ntf/DefaultNtfc.vue'))
 const homework_is_recommended = defineAsyncComponent(() => import('./ntf/WasRecommend.vue'))
 const homework_expiring_today = defineAsyncComponent(() => import('./ntf/HomeworkExpiringToday.vue'))
+const exam_score_updated = defineAsyncComponent(() => import('./ntf/ExamScoreUpdated.vue'))
+const exam_submit_started = defineAsyncComponent(() => import('./ntf/ExamSubmitStarted.vue'))
+const exam_expiring = defineAsyncComponent(() => import('./ntf/ExamExpiring.vue'))
+const exam_will_start = defineAsyncComponent(() => import('./ntf/ExamWillStart.vue'))
 
 // Define a component mapping table with keys as component names (strings) and values
 // as dynamically imported Promise objects.
@@ -30,6 +34,10 @@ const component_map: { [key: string]: typeof topic_create } = {
   activity_opened,
   homework_is_recommended,
   homework_expiring_today,
+  exam_score_updated,
+  exam_submit_started,
+  exam_expiring,
+  exam_will_start,
 }
 
 /**

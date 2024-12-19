@@ -23,7 +23,11 @@
     "select_prefer_language": "选择语言",
     "open_settings": "打开设置页面",
     "homework_expiring_today": "作业今天截止",
-    "open_xzzd": "打开学在浙大"
+    "open_xzzd": "打开学在浙大",
+    "exam_score_updated": "考试成绩已更新",
+    "exam_submit_started": "考试提交已开始",
+    "exam_expiring": "考试即将截止",
+    "exam_will_start": "考试即将开始"
   },
   "ntf": {
     "activity_expiring": ["课程 ", " 的学习活动 ", " 即将截止"],
@@ -33,7 +37,11 @@
     "homework_opened": ["课程 ", " 的作业 ", " 已开始"],
     "homework_expiring_today": ["课程 ", " 的作业 ", " 今天 {time} 截止"],
     "topic_create": ["在课程 ", " 的讨论区 ", " 发布了新帖子"],
-    "was_recommended": ["你在课程 ", " 中的作业 ", " 得到了老师推荐"]
+    "was_recommended": ["你在课程 ", " 中的作业 ", " 得到了老师推荐"],
+    "exam_score_updated": ["课程 ", " 的考试 ", " 成绩已更新"],
+    "exam_submit_started": ["课程 ", " 的考试 ", " 提交已开始"],
+    "exam_expiring": ["课程 ", " 的考试 ", " 即将截止"],
+    "exam_will_start": ["课程 ", " 的考试 ", " 即将开始"]
   },
   "error": {
     "no_login": "请先登录学在浙大"
