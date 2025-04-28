@@ -88,11 +88,12 @@ defineExpose({ getNotification })
 
 <template>
   <div class="notification-container">
-    <div class="notification-header">
+    <div
+      class="notification-header" :class="{
+        'notification-header-unread': ntf.unread_count > 0,
+      }" :data-unread-count="Math.floor(ntf.unread_count)"
+    >
       {{ $t("message.notification_title") }}
-    </div>
-    <div class="notification-unread">
-      {{ $t("message.notification_unread") }} {{ Math.floor(ntf.unread_count) }}
     </div>
     <div v-for="(notification, index) in ntf.notifications" :key="index" class="notification-cell">
       <component :is="getComponent(notification.type)" :data="notification" />
@@ -105,30 +106,46 @@ defineExpose({ getNotification })
 
 <style>
 .notification-container{
-    border: solid 1px var(--xzzd-border-color);
+    /* border: solid 1px var(--xzzd-border-color); */
     border-radius: 10px;
     padding: 6px;
     width: calc(100% - 12px);
     margin: 6px;
     color: var(--xzzd-text-color)
 }
-.notification-header{
-    font-weight: 600;
-    font-size: 23px;
-    margin: 6px;
-    margin-left: 10px;
-}
-.notification-unread{
-  font-weight: 500;
-  font-size: 16px;
+
+.notification-header {
+  position: relative; /* Required for absolute positioning of the pseudo-element */
+  display: inline-block; /* Adjust display as needed for proper positioning */
+  /* Existing styles below */
+  font-weight: 600;
+  font-size: 23px;
+  margin: 6px;
   margin-left: 10px;
 }
-.notification-cell{
+
+.notification-header-unread.notification-header[data-unread-count]::after {
+  content: attr(data-unread-count); /* Display a dot, not the count. Use data-attribute for count. */
+  position: absolute;
+  top: 0; /* Position near the top edge */
+  right: 0; /* Position near the right edge */
+  font-size: 11px;
+  transform: translate(70%, -10%); /* Adjust to position precisely at the top-right corner */
+  width: 20px; /* Size of the dot */
+  height: 20px; /* Size of the dot */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(180, 28, 28);
+  border-radius: 50%;
+}
+
+/*.notification-cell{
     border: 1px solid var(--xzzd-border-color);
     border-radius: 8px;
     margin: 10px;
     padding: 9px;
-}
+}*/
 .notification-load{
   border: 1px solid var(--xzzd-border-color);
   border-radius: 4px;

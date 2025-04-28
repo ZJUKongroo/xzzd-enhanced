@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { usePreferredDark } from '@vueuse/core'
 import { openCourse } from './ntf/openLink'
 
 defineProps({
@@ -12,7 +11,7 @@ const default_image = 'https://courses.zju.edu.cn/static/assets/images/large/cou
 </script>
 
 <template>
-  <div class="course-cell-conatiner" @click="openCourse(data.id)">
+  <!-- <div class="course-cell-conatiner" @click="openCourse(data.id)">
     <img class="course-cell-image" :src="data.cover ? data.cover : default_image">
     <div class="course-cell-main">
       <div class="course-cell-main-title ellipsis-text">
@@ -32,21 +31,50 @@ const default_image = 'https://courses.zju.edu.cn/static/assets/images/large/cou
         </el-tooltip>
       </div>
     </div>
-  </div>
+  </div> -->
+  <v-card class="course-cell-conatiner" link border flat @click="openCourse(data.id)">
+    <div class="d-flex flex-no-wrap justify-space-between align-center">
+      <div>
+        <v-card-title class="text-h5">
+          <div class="course-cell-main-title ellipsis-text">
+            {{ data.display_name }}
+          </div>
+        </v-card-title>
+
+        <v-card-subtitle>
+          <div class="course-cell-main-attr ellipsis-text">
+            <span>{{ data.department?.name }}</span>
+            {{ $t("message.lesson_start") }} <span>{{ data.start_date }}</span>
+          </div>
+          <div class="course-cell-main-class ellipsis-text">
+            {{ $t("message.course_class") }} {{ data.course_attributes?.teaching_class_name }}
+          </div>
+          <div class="course-cell-instuctors-wrapper ellipsis-text">
+            {{ $t("message.course_instructor") }}
+            <div v-for="(instructor, index) in data.instructors" :key="index" v-tooltip="instructor.name" class="course-cell-instuctors">
+              <img class="course-cell-instuctors-img" :src="instructor.avatar_small_url">
+            </div>
+          </div>
+        </v-card-subtitle>
+      </div>
+
+      <img class="course-cell-image" :src="data.cover ? data.cover : default_image">
+    </div>
+  </v-card>
 </template>
 
 <style>
 .course-cell-conatiner{
-    border: 1px solid var(--xzzd-border-color);
-    height: 100px;
+    /* border: 1px solid var(--xzzd-border-color); */
+    /* height: 100px; */
     width: 47%;
     margin: 6px;
-    border-radius: 15px;
-    padding: 7px;
-    display: flex;
-    flex-direction: row;
-    color: var(--xzzd-text-color);
-    transition: .3s;
+    /* border-radius: 15px; */
+    /* padding: 7px; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* color: var(--xzzd-text-color); */
+    /* transition: .3s; */
     overflow: hidden;
 }
 .course-cell-conatiner:hover{
@@ -57,9 +85,10 @@ const default_image = 'https://courses.zju.edu.cn/static/assets/images/large/cou
   background-color: var(--xzzd-button-active);
 }
 .course-cell-image{
+    margin: 10px;
     height: 86px!important;
     width: 172px!important;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .course-cell-main{
     width: calc(100% - 180px);
@@ -70,27 +99,30 @@ const default_image = 'https://courses.zju.edu.cn/static/assets/images/large/cou
     justify-content: space-between;
 }
 .course-cell-main-title{
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
 }
 .course-cell-main-attr{
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 500;
+  margin-bottom: 5px;
 }
 .course-cell-main-class{
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   line-height: 12px;
+  margin-bottom: 6px;
 }
 .course-cell-instuctors-wrapper{
-  font-size: 10px;
+  font-size: 15px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
 }
 .course-cell-instuctors-img{
-  height: 14px;
-  width: 14px;
-  border-radius: 100%;
-  margin-right: 3px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-left: 7px;
 }
 </style>

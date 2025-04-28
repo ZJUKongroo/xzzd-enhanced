@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import 'vuetify/styles'
+
 import App from './App.vue'
 import router from './router'
 import { setupApp } from '~/logic/common-setup'

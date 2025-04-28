@@ -16,9 +16,9 @@ const currentPage = ref(1)
 const pageSize = ref(10)
 const total = ref(0)
 
-function handleSizeChange(val: number) {
-  getCourse(1, val)
-}
+// function handleSizeChange(val: number) {
+//   getCourse(1, val)
+// }
 function handleCurrentChange(val: number) {
   getCourse(val, pageSize.value)
 }
@@ -35,7 +35,7 @@ async function getCourse(page: number, page_size: number) {
       page_size,
     },
   })).data) as MY_COURSE
-  courses.value = res
+  courses.value.courses = res.courses
   total.value = res.total
 }
 
@@ -50,7 +50,7 @@ onBeforeMount(() => {
       <CourseCell v-for="(course, index) in courses.courses" :key="index" :data="course" />
     </div>
     <div class="course-footer">
-      <el-pagination
+      <!-- <v-pagination
         v-model:current-page="currentPage"
         v-model:page-size="pageSize"
         :page-sizes="[10, 20, 30]"
@@ -59,6 +59,12 @@ onBeforeMount(() => {
         :total="total"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
+      /> -->
+      <v-pagination
+        v-model="currentPage"
+        :length="Math.ceil(total / pageSize)"
+        :total-visible="7"
+        @update:model-value="handleCurrentChange"
       />
     </div>
   </div>

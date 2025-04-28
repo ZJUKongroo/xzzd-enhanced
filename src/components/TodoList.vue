@@ -50,38 +50,66 @@ onBeforeMount(() => getTodos())
 </script>
 
 <template>
-  <div v-if="isLogin" class="todolist-container">
-    <div class="todolist-header">
-      {{ $t("message.todo") }}
-    </div>
-    <a v-for="(todo, index) in sortedItem" :key="index" class="todolist-cell" :href="`https://courses.zju.edu.cn/course/${todo.course_id}/learning-activity#/${todo.id}?&view=scores`">
-      <div class="todolist-cell-name">
-        {{ todo.course_name }}
-        <div class="todolist-cell-type">
-          {{ $t(`message.todo_type_${todo.type}`) }}
+  <template v-if="isLogin">
+    <!-- <div class="todolist-container"> -->
+    <!-- <div class="todolist-header">
+        {{ $t("message.todo") }}
+      </div>
+      <a v-for="(todo, index) in sortedItem" :key="index" class="todolist-cell" :href="`https://courses.zju.edu.cn/course/${todo.course_id}/learning-activity#/${todo.id}?&view=scores`">
+        <div class="todolist-cell-name">
+          {{ todo.course_name }}
+          <div class="todolist-cell-type">
+            {{ $t(`message.todo_type_${todo.type}`) }}
+          </div>
         </div>
-      </div>
-      <div class="todolist-cell-title ellipsis-text">
-        {{ todo.title }}
-      </div>
-      <div class="todolist-cell-endtime">
-        {{ $t("message.todo_endtime") }} {{ (new Date(todo.end_time)).toLocaleString() }}
-      </div>
-    </a>
-  </div>
-  <div v-else>
+        <div class="todolist-cell-title ellipsis-text">
+          {{ todo.title }}
+        </div>
+        <div class="todolist-cell-endtime">
+          {{ $t("message.todo_endtime") }} {{ (new Date(todo.end_time)).toLocaleString() }}
+        </div>
+      </a> -->
+    <v-card
+      border flat class="todolist-container"
+      prepend-icon="mdi-check-bold"
+    >
+      <template #title>
+        <div class="todolist-header">
+          {{ $t("message.todo") }}
+        </div>
+      </template>
+      <v-card-text>
+        <a v-for="(todo, index) in sortedItem" :key="index" v-ripple class="todolist-cell" :href="`https://courses.zju.edu.cn/course/${todo.course_id}/learning-activity#/${todo.id}?&view=scores`">
+          <div class="todolist-cell-name">
+            {{ todo.course_name }}
+            <div class="todolist-cell-type">
+              {{ $t(`message.todo_type_${todo.type}`) }}
+            </div>
+          </div>
+          <div class="todolist-cell-title ellipsis-text">
+            {{ todo.title }}
+          </div>
+          <div class="todolist-cell-endtime">
+            {{ $t("message.todo_endtime") }} {{ (new Date(todo.end_time)).toLocaleString() }}
+          </div>
+        </a>
+      </v-card-text>
+    </v-card>
+    <!-- </div> -->
+  </template>
+  <template v-else>
     {{ $t("error.no_login") }}
-  </div>
+  </template>
 </template>
 
 <style>
 .todolist-container{
-    border: solid 1px var(--xzzd-border-color);
-    border-radius: 10px;
-    padding: 6px;
-    width: calc(100% - 12px);
-    margin: 6px;
-    color: var(--xzzd-text-color)
+    /* border: solid 1px var(--xzzd-border-color); */
+    /* border-radius: 10px; */
+    /* padding: 6px; */
+    /* width: calc(100% - 12px); */
+    margin-top: 20px;
+    /* color: var(--xzzd-text-color) */
 }
 .todolist-header{
     font-weight: 600;
@@ -91,18 +119,15 @@ onBeforeMount(() => getTodos())
 }
 .todolist-cell{
     border: 1px solid var(--xzzd-border-color);
-    border-radius: 8px;
-    padding: 5px;
-    margin: 10px;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 5px;
     transition: .3s;
     display: block;
 }
 .todolist-cell:hover{
     cursor: pointer;
     background-color: var(--xzzd-button-hover);
-}
-.todolist-cell:active{
-    background-color: var(--xzzd-button-active);
 }
 .todolist-cell-name{
     font-size: 11px;

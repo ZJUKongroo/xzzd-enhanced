@@ -3,7 +3,8 @@
 import axios from '~/request'
 
 export function openCourse(course_id: number) {
-  window.location.href = `https://courses.zju.edu.cn/course/${course_id}/content#/`
+  // window.location.href = `https://courses.zju.edu.cn/course/${course_id}/content#/`
+  window.open(`https://courses.zju.edu.cn/course/${course_id}/content#/`, '_blank')
 }
 
 export function openHomework(homework_id: number) {

@@ -11,6 +11,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// import vuetify from 'vite-plugin-vuetify'
 import { isDev, port, r } from './scripts/utils'
 import packageJson from './package.json'
 
@@ -28,7 +29,9 @@ export const sharedConfig: UserConfig = {
   },
   plugins: [
     Vue(),
-
+    // vuetify({
+    //   autoImport: true,
+    // }),
     AutoImport({
       imports: [
         'vue',

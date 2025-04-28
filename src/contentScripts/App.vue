@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { storage } from 'webextension-polyfill'
-import { sendMessage } from 'webext-bridge/content-script'
-import SidebarCell from './components/SidebarCell.vue'
-import SettingsList from '~/components/SettingsList.vue'
-// Iconify icons
-import AntDesignHomeFilled from '~icons/ant-design/home-filled'
-import AntDesignUnorderedList from '~icons/ant-design/unordered-list'
-import AntDesignSettingFilled from '~icons/ant-design/setting-filled'
+// import { sendMessage } from 'webext-bridge/content-script'
+// import SidebarCell from './components/SidebarCell.vue'
+import { useVuetifyDarkmode } from '../composables/useVuetifyDarkmode'
+import MainView from './views/MainView.vue'
 
-const settingsVisible = ref(false)
+useVuetifyDarkmode()
+// import SettingsList from '~/components/SettingsList.vue'
+
+// const settingsVisible = ref(false)
 // Open settings page
-function openSettings() {
-  settingsVisible.value = true
-}
+// function openSettings() {
+//   settingsVisible.value = true
+// }
 // Save user cookie for side panel to use
 function saveCookie() {
   if (document.cookie) {
@@ -22,29 +22,29 @@ function saveCookie() {
 }
 // In content script, we can't directly access to plugin's runtime
 // We use message and open new page in background
-function openOptionsPage() {
-  sendMessage('open-settings', {}, 'background')
-}
+// function openOptionsPage() {
+//   sendMessage('open-settings', {}, 'background')
+// }
 onMounted(() => saveCookie())
 </script>
 
 <template>
-  <div class="app-container">
+  <!-- <div class="app-container">
     <div class="app-sidebar-container">
       <div class="app-sidebar">
         <SidebarCell name="home" path="/user/index">
           <template #icon>
-            <AntDesignHomeFilled />
+            <v-icon icon="mdi-home" />
           </template>
         </SidebarCell>
         <SidebarCell name="course" path="/user/course">
           <template #icon>
-            <AntDesignUnorderedList />
+            <v-icon icon="mdi-format-list-bulleted" />
           </template>
         </SidebarCell>
         <SidebarCell name="settings" @click="openSettings">
           <template #icon>
-            <AntDesignSettingFilled />
+            <v-icon icon="mdi-cog" />
           </template>
         </SidebarCell>
       </div>
@@ -60,7 +60,8 @@ onMounted(() => saveCookie())
         </el-button>
       </template>
     </CDialog>
-  </div>
+  </div> -->
+  <MainView />
 </template>
 
 <style>

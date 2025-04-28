@@ -2,6 +2,7 @@
 import { ElMessage } from 'element-plus'
 import './ntfc.css'
 import type { PropType } from 'vue'
+import CommonBody from './CommonBody.vue'
 
 const props = defineProps({
   data: {
@@ -22,22 +23,21 @@ function copyMessage() {
 </script>
 
 <template>
-  <div class="ntfc-header">
-    <div class="ntfc-header-title">
+  <CommonBody icon="mdi-alert" :time-stamp="props.data.timestamp">
+    <template #title>
       {{ props.data.type }}
-    </div>
-  </div>
-  <div class="ntfc-header-time">
-    {{ (new Date(props.data.timestamp)).toLocaleString() }}
-  </div>
-  <div class="ntfc-defaut-content">
-    {{ $t("ntf.default_ntfc.0") }} {{ payload }} <br>
-  </div>
-  <div class="ntfc-defaut-banner">
-    {{ $t("ntf.default_ntfc.1") }}<span class="ntfc-default-button" @click="copyMessage">
-      {{ $t("message.copy") }}
-    </span>{{ $t("ntf.default_ntfc.2") }}
-  </div>
+    </template>
+    <template #content>
+      <div class="ntfc-defaut-content">
+        {{ $t("ntf.default_ntfc.0") }} {{ payload }} <br>
+      </div>
+      <div class="ntfc-defaut-banner">
+        {{ $t("ntf.default_ntfc.1") }}<span class="ntfc-default-button" @click="copyMessage">
+          {{ $t("message.copy") }}
+        </span>{{ $t("ntf.default_ntfc.2") }}
+      </div>
+    </template>
+  </CommonBody>
 </template>
 
 <style>
@@ -54,12 +54,5 @@ function copyMessage() {
   margin-left: 2px;
   margin-right: 2px;
   transition: .3s;
-}
-.ntfc-default-button:hover{
-  background-color: var(--xzzd-button-hover);
-  cursor: pointer;
-}
-.ntfc-default-button:active{
-  background-color: var(--xzzd-button-ctive);
 }
 </style>

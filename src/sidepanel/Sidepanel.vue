@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import TodoList from '~/components/TodoList.vue'
+import { useVuetifyDarkmode } from '~/composables/useVuetifyDarkmode'
+
+useVuetifyDarkmode()
 
 function openOptionsPage() {
   browser.runtime.openOptionsPage()
@@ -10,13 +13,15 @@ function openXzzd() {
 </script>
 
 <template>
-  <el-button class="sidepanel-button" @click="openOptionsPage">
+  <v-btn class="sidepanel-button" @click="openOptionsPage">
     {{ $t("message.open_settings") }}
-  </el-button>
-  <el-button class="sidepanel-button" @click="openXzzd">
+  </v-btn>
+  <v-btn class="sidepanel-button" @click="openXzzd">
     {{ $t("message.open_xzzd") }}
-  </el-button>
-  <TodoList />
+  </v-btn>
+  <div class="sidepanel-page">
+    <TodoList />
+  </div>
 </template>
 
 <style>
@@ -26,5 +31,8 @@ function openXzzd() {
 }
 #app{
   overflow: auto;
+}
+.sidepanel-page{
+  padding: 10px;
 }
 </style>
