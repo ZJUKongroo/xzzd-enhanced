@@ -27,7 +27,10 @@
     "exam_score_updated": "Exam Score Updated",
     "exam_submit_started": "Exam Submission Started",
     "exam_expiring": "Exam Expiring",
-    "exam_will_start": "Exam Will Start"
+    "exam_will_start": "Exam Will Start",
+    "exam_opened": "Exam Opened",
+    "homework_score_updated": "Homework Score Updated",
+    "my_course": "My Course"
   },
   "ntf": {
     "activity_opened": ["Course ", "'s learning activity ", " has opened."],
@@ -39,9 +42,11 @@
     "topic_create": [" published a new post in course ", "'s discussion area ", "."],
     "was_recommended": ["Your homework ", " in course ", "was recommended."],
     "exam_score_updated": ["Course ", "'s exam ", " score has been updated"],
+    "homework_score_updated": ["Course ", "'s homework ", " score has been updated to: ", "Instructor comment:"],
     "exam_submit_started": ["Course ", "'s exam ", " submission has started"],
     "exam_expiring": ["Course ", "'s exam ", " is expiring"],
-    "exam_will_start": ["Course ", "'s exam ", " will start soon"]
+    "exam_will_start": ["Course ", "'s exam ", " will start soon"],
+    "exam_opened": ["Course ", "'s exam ", " opened"]
   },
   "error": {
     "no_login": "Please login first."

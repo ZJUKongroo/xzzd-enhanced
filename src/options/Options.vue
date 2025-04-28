@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import SettingsList from '~/components/SettingsList.vue'
+import { useVuetifyDarkmode } from '~/composables/useVuetifyDarkmode'
+
+useVuetifyDarkmode()
 </script>
 
 <template>
   <main class="options-main">
     <SettingsList />
-    <LicenseAbout />
+    <LicenseView />
   </main>
 </template>
 
@@ -15,5 +17,6 @@ import SettingsList from '~/components/SettingsList.vue'
 }
 #app{
   overflow: auto;
+  background-color: var(--xzzd-bg-color-solid);
 }
 </style>

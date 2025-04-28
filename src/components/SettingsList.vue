@@ -11,39 +11,44 @@ function locale_change() {
 </script>
 
 <template>
-  <div class="settings-header">
-    {{ $t("message.settings") }}
-  </div>
-  <table>
-    <tbody>
-      <tr class="settings-locale-changer settings-item">
-        <td class="settings-item-title">
-          {{ $t('message.select_prefer_language') }}:
-        </td>
-        <td class="settings-item-main">
-          <el-select v-model="$i18n.locale" :placeholder="$t('message.select_prefer_language')" style="width: 240px" @change="locale_change">
-            <el-option
-              v-for="locale in $i18n.availableLocales"
-              :key="`locale-${locale}`"
-              :label="locale"
-              :value="locale"
+  <div class="settings-container">
+    <div class="settings-header">
+      {{ $t("message.settings") }}
+    </div>
+    <table>
+      <tbody>
+        <tr class="settings-locale-changer settings-item">
+          <td class="settings-item-title">
+            {{ $t('message.select_prefer_language') }}:
+          </td>
+          <td class="settings-item-main">
+            <v-select
+              v-model="$i18n.locale"
+              density="compact"
+              :placeholder="$t('message.select_prefer_language')"
+              :items="$i18n.availableLocales"
+              size="small"
+              @update:model-value="locale_change"
             />
-          </el-select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <style>
+.settings-container{
+  padding: 40px;
+}
 .settings-header{
-  font-size: 23px;
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 10px;
 }
 .settings-item-title{
-  font-size: 17px;
+  font-size: 1.3rem;
   font-weight: 500;
-  padding-right: 7px;
+  padding-right: 15px;
 }
 </style>

@@ -6,6 +6,7 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import { useDark } from '~/composables/useDark'
 import { i18n } from '~/composables/useI18n'
 import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
 
 const vuetify = createVuetify({
   components,

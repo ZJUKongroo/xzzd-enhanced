@@ -13,13 +13,13 @@ function openXzzd() {
 </script>
 
 <template>
-  <v-btn class="sidepanel-button" @click="openOptionsPage">
-    {{ $t("message.open_settings") }}
-  </v-btn>
-  <v-btn class="sidepanel-button" @click="openXzzd">
-    {{ $t("message.open_xzzd") }}
-  </v-btn>
   <div class="sidepanel-page">
+    <v-btn variant="tonal" class="sidepanel-button" @click="openOptionsPage">
+      {{ $t("message.open_settings") }}
+    </v-btn>
+    <v-btn variant="tonal" class="sidepanel-button" @click="openXzzd">
+      {{ $t("message.open_xzzd") }}
+    </v-btn>
     <TodoList />
   </div>
 </template>
@@ -27,7 +27,6 @@ function openXzzd() {
 <style>
 .sidepanel-button{
     margin: 10px;
-    display: inline-block;
 }
 #app{
   overflow: auto;

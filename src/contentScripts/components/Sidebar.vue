@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { animate, createSpring, stagger } from 'animejs'
 import SidebarCell from './SidebarCell.vue'
-// import ExamCell from './ExamCell.vue'
 import SidebarFooter from './SidebarFooter.vue'
-// import { useMainStore } from '~/store/mainStore'
-// import { entry } from '~/ts/entry'
+import config from '@/../package.json'
 import '../styles/sidebar.css'
 
 const router = useRouter()
@@ -24,19 +23,29 @@ function open(path: string, query?: any) {
   })
 }
 
-// onMounted(() => {
-//   const main = document.getElementById('sidebar-main')
-//   if (main) {
-//     entry('right', main, 50)
-//   }
-// })
+const settingsVisible = ref(false)
+// Open settings page
+function openSettings() {
+  settingsVisible.value = true
+}
+// Save user cookie for side panel to use
+
+onMounted(() => {
+  nextTick(() => {
+    animate('.sidebar-animate', {
+      opacity: [0, 1],
+      translateX: [-50, 0],
+      duration: 100,
+      delay: stagger(100),
+      ease: createSpring(),
+    })
+  })
+})
 </script>
 
 <template>
   <div class="sidebar-main">
-    <div class="sidebar-logo">
-      <!-- <img v-if="store.isDarkMode" src="@/assets/img/logo-dark.png" alt="logo" />
-      <img v-else src="@/assets/img/logo-light.png" alt="logo" /> -->
+    <div class="sidebar-logo sidebar-animate">
       <div class="sidebar-title">
         学在浙大
       </div>
@@ -44,31 +53,21 @@ function open(path: string, query?: any) {
         enhanced
       </div>
       <div class="sidebar-logo-version">
-        v0.1.0
+        {{ `v${config.version}` }}
       </div>
     </div>
-    <div class="sidebar-menu">
+    <div class="sidebar-menu sidebar-animate">
       <SidebarCell v-for="(option, index) in options" :key="index" v-ripple :name="option.name" :icon-class="option.iconClass" @click="open(option.path)" />
-      <SidebarCell v-ripple name="设置" icon-class="mdi-cog" />
+      <SidebarCell v-ripple name="设置" icon-class="mdi-cog" @click="openSettings" />
     </div>
-    <!-- <div class="sidebar-exam">
-      <template v-if="store.loading">
-        <v-skeleton-loader v-for="n in 2" :key="n" type="list-item-two-line" class="mb-4" />
-      </template>
-      <template v-else>
-        <div v-if="exams.length === 0">
-          暂无考试
-        </div>
-        <ExamCell
-          v-for="exam in exams" v-else v-ripple :info="exam" @click="open('/exam/review', {
-            id: exam.id,
-          })"
-        />
-      </template>
-  </div> -->
     <div style="flex-grow:1;">
       <div />
     </div>
-    <SidebarFooter />
+    <SidebarFooter class="sidebar-animate" />
   </div>
+  <CDialog v-model:visible="settingsVisible" width="500px" height="400px">
+    <template #content>
+      <SettingsList />
+    </template>
+  </CDialog>
 </template>

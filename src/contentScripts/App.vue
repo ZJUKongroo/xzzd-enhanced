@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { storage } from 'webextension-polyfill'
-// import { sendMessage } from 'webext-bridge/content-script'
-// import SidebarCell from './components/SidebarCell.vue'
 import { useVuetifyDarkmode } from '../composables/useVuetifyDarkmode'
 import MainView from './views/MainView.vue'
 
@@ -29,38 +27,6 @@ onMounted(() => saveCookie())
 </script>
 
 <template>
-  <!-- <div class="app-container">
-    <div class="app-sidebar-container">
-      <div class="app-sidebar">
-        <SidebarCell name="home" path="/user/index">
-          <template #icon>
-            <v-icon icon="mdi-home" />
-          </template>
-        </SidebarCell>
-        <SidebarCell name="course" path="/user/course">
-          <template #icon>
-            <v-icon icon="mdi-format-list-bulleted" />
-          </template>
-        </SidebarCell>
-        <SidebarCell name="settings" @click="openSettings">
-          <template #icon>
-            <v-icon icon="mdi-cog" />
-          </template>
-        </SidebarCell>
-      </div>
-    </div>
-    <div class="app-main">
-      <RouterView />
-    </div>
-    <CDialog v-model:visible="settingsVisible">
-      <template #content>
-        <SettingsList />
-        <el-button style="margin-top: 10px;" @click="openOptionsPage">
-          {{ $t("message.open_settings") }}
-        </el-button>
-      </template>
-    </CDialog>
-  </div> -->
   <MainView />
 </template>
 
@@ -71,6 +37,7 @@ onMounted(() => saveCookie())
   display: flex;
   flex-direction: row;
   background-color: var(--xzzd-bg-color-solid);
+  color: var(--xzzd-text-color);
 }
 .app-sidebar-container{
   height: 100%;

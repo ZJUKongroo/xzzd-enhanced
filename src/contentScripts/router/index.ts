@@ -36,15 +36,7 @@ export default createRouter({
       meta: {
         title: '许可',
       },
-      component: () => import('../views/Footer/LicenseView.vue'),
-    },
-    {
-      path: '/term-of-use',
-      name: 'Term of Use',
-      meta: {
-        title: '使用条款',
-      },
-      component: () => import('../views/Footer/TermOfUseView.vue'),
+      component: () => import('../../components/LicenseView.vue'),
     },
   ],
 },

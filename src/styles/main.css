@@ -1,78 +1,112 @@
 html,
-body{
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-html{
-  --xzzd-border-color:rgb(100, 100, 100);
-  --xzzd-bg-color-alpha:#FFFFFFAA;
-  --xzzd-bg-color-solid:#f5f5f5;
-  --xzzd-text-color:#303133;
-  --xzzd-button-hover:#1d1d1d2a;
-  --xzzd-button-active:#1d1d1d4f;
-  --xzzd-link-color:#0fbbff;
+html {
+  --xzzd-border-color: rgb(100, 100, 100);
+  --xzzd-bg-color-alpha: #ffffffaa;
+  --xzzd-bg-color-solid: #fafafa;
+  --xzzd-text-color: #303133;
+  --xzzd-button-hover: #1d1d1d2a;
+  --xzzd-button-active: #1d1d1d4f;
+  --xzzd-link-color: #0fbbff;
   --text-shadow-color: #b3b3b3ae;
-    --bg-color-solid: #fafafa;
-    --bg-color-alter: #ffffff;
-    --bg-color: #ffffffae;
-    --bg-color-shallow:#fefefe;
-    --bg-color-darker:#f6f6f6;
-    --text-color: #1c1c1c;
-    --bd-color: #bbbbbbce;
-    --login-button-bg: #9acdff;
-    --login-button-bd: #c8c8c8;
-    --login-button-hover: #7db7f0;
-    --branch-viewing-color: rgb(122, 212, 215);
-    --branch-viewing-hover-color: rgb(102, 177, 180);
-    --delete-box-left-border: #f56c6c;
-    --delete-box-bg: #f56c6c42;
-    --delete-box-title: #511f1f;
-    --delete-box-text: black;
-    --inset-shadow: inset 0px 0px 17px #f7f7f710;
-    --out-shadow: 0px 0px 17px #f3f3f310;
-    --question-completed-bg: #67924d;
+  --bg-color-solid: #fafafa;
+  --bg-color-alter: #ffffff;
+  --bg-color: #ffffffae;
+  --bg-color-shallow: #fefefe;
+  --bg-color-darker: #f6f6f6;
+  --text-color: #1c1c1c;
+  --bd-color: #bbbbbbce;
+  --login-button-bg: #9acdff;
+  --login-button-bd: #c8c8c8;
+  --login-button-hover: #7db7f0;
+  --branch-viewing-color: rgb(122, 212, 215);
+  --branch-viewing-hover-color: rgb(102, 177, 180);
+  --delete-box-left-border: #f56c6c;
+  --delete-box-bg: #f56c6c42;
+  --delete-box-title: #511f1f;
+  --delete-box-text: black;
+  --inset-shadow: inset 0px 0px 17px #f7f7f710;
+  --out-shadow: 0px 0px 17px #f3f3f310;
+  --question-completed-bg: #67924d;
 }
-html.dark{
-  --xzzd-border-color:rgb(66, 66, 66);
-  --xzzd-bg-color-alpha:#111111aa;
-  --xzzd-bg-color-solid:#171717;
-  --xzzd-text-color:#e8e8e8;
-  --xzzd-button-hover:#a9a9a92a;
-  --xzzd-button-active:#b3b3b34f;
-  --xzzd-link-color:#0b5d7e;
+html.dark {
+  --xzzd-border-color: rgb(66, 66, 66);
+  --xzzd-bg-color-alpha: #111111aa;
+  --xzzd-bg-color-solid: #2a2a2a;
+  --xzzd-text-color: #e2e2e2;
+  --xzzd-button-hover: #a9a9a92a;
+  --xzzd-button-active: #b3b3b34f;
+  --xzzd-link-color: #0b5d7e;
   --text-shadow-color: #686868af;
-    --bg-color-solid: #2a2a2a;
-    --bg-color-alter: #2d2d2d;
-    --bg-color-shallow:#2f2f2f;
-    --bg-color-darker:#1f1f1f;
-    --bg-color: #2a2a2ace;
-    --text-color: #c0c0c0;
-    --bd-color: #7f7f7f7c;
-    --navi-bg-color: #131313e2;
-    --login-button-bg: #409EFF;
-    --login-button-bd: #999;
-    --login-button-hover: #327ecb;
-    --branch-viewing-color: rgb(95, 158, 160);
-    --branch-viewing-hover-color: rgb(63, 131, 134);
-    --delete-box-left-border: #b74949;
-    --delete-box-bg: #823737;
-    --delete-box-title: #f7b2b2;
-    --delete-box-text: white;
-    --inset-shadow: inset 0px 0px 17px #00000010;
-    --out-shadow: 0px 0px 17px #0000001a;
-    --question-completed-bg: #355722;
+  --bg-color-solid: #2a2a2a;
+  --bg-color-alter: #2d2d2d;
+  --bg-color-shallow: #2f2f2f;
+  --bg-color-darker: #1f1f1f;
+  --bg-color: #2a2a2ace;
+  --text-color: #c0c0c0;
+  --bd-color: #7f7f7f7c;
+  --navi-bg-color: #131313e2;
+  --login-button-bg: #409eff;
+  --login-button-bd: #999;
+  --login-button-hover: #327ecb;
+  --branch-viewing-color: rgb(95, 158, 160);
+  --branch-viewing-hover-color: rgb(63, 131, 134);
+  --delete-box-left-border: #b74949;
+  --delete-box-bg: #823737;
+  --delete-box-title: #f7b2b2;
+  --delete-box-text: white;
+  --inset-shadow: inset 0px 0px 17px #00000010;
+  --out-shadow: 0px 0px 17px #0000001a;
+  --question-completed-bg: #355722;
 }
-#app{
+#app {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
 }
 .ellipsis-text {
-  white-space: nowrap;      /* 不换行 */
-  overflow: hidden;         /* 超出隐藏 */
-  text-overflow: ellipsis;  /* 超出部分显示省略号 */
+  white-space: nowrap; /* 不换行 */
+  overflow: hidden; /* 超出隐藏 */
+  text-overflow: ellipsis; /* 超出部分显示省略号 */
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--xzzd-text-color);
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--xzzd-text-color);
+  margin-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--xzzd-text-color);
+  margin-bottom: 0.2rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--xzzd-text-color);
+  margin-bottom: 0.1rem;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--xzzd-text-color);
 }

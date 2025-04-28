@@ -1,11 +1,9 @@
 import { createApp } from 'vue'
-import 'vuetify/styles'
 
 import App from './App.vue'
 import router from './router'
 import { setupApp } from '~/logic/common-setup'
 import '~/styles/index'
-import 'element-plus/theme-chalk/dark/css-vars.css'
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
 (() => {

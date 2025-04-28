@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { nextTick } from 'vue'
 import '~/styles/cui.css'
-import AntDesignCloseOutlined from '~icons/ant-design/close-outlined?width=1024px&height=1024px'
 
 const props = defineProps({
   width: String,
@@ -53,9 +52,7 @@ function resize() {
         <slot name="content" />
       </div>
       <div class="cui-dialog-close" @click="handleClose">
-        <el-icon :size="25">
-          <AntDesignCloseOutlined />
-        </el-icon>
+        <v-icon icon="mdi-close" />
       </div>
     </div>
   </div>
@@ -79,7 +76,7 @@ function resize() {
     height: 300px;
     max-width: 80%;
     border: solid var(--xzzd-border-color) 1px;
-    background-color: var(--xzzd-bg-color-solid);
+    background-color: var(--bg-color-solid);
     border-radius: 8px;
     transform: translate(-50%, -50%);
     top: 50%;

@@ -11,27 +11,6 @@ const default_image = 'https://courses.zju.edu.cn/static/assets/images/large/cou
 </script>
 
 <template>
-  <!-- <div class="course-cell-conatiner" @click="openCourse(data.id)">
-    <img class="course-cell-image" :src="data.cover ? data.cover : default_image">
-    <div class="course-cell-main">
-      <div class="course-cell-main-title ellipsis-text">
-        {{ data.display_name }}
-      </div>
-      <div class="course-cell-main-attr ellipsis-text">
-        <span>{{ data.department.name }}</span>
-        {{ $t("message.lesson_start") }} <span>{{ data.start_date }}</span>
-      </div>
-      <div class="course-cell-main-class ellipsis-text">
-        {{ $t("message.course_class") }} {{ data.course_attributes.teaching_class_name }}
-      </div>
-      <div class="course-cell-instuctors-wrapper ellipsis-text">
-        {{ $t("message.course_instructor") }}
-        <el-tooltip v-for="(instructor, index) in data.instructors" :key="index" :effect="usePreferredDark() ? 'light' : 'dark'" class="course-cell-instuctors" :content="instructor.name">
-          <img class="course-cell-instuctors-img" :src="instructor.avatar_small_url">
-        </el-tooltip>
-      </div>
-    </div>
-  </div> -->
   <v-card class="course-cell-conatiner" link border flat @click="openCourse(data.id)">
     <div class="d-flex flex-no-wrap justify-space-between align-center">
       <div>
@@ -65,16 +44,7 @@ const default_image = 'https://courses.zju.edu.cn/static/assets/images/large/cou
 
 <style>
 .course-cell-conatiner{
-    /* border: 1px solid var(--xzzd-border-color); */
-    /* height: 100px; */
-    width: 47%;
-    margin: 6px;
-    /* border-radius: 15px; */
-    /* padding: 7px; */
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* color: var(--xzzd-text-color); */
-    /* transition: .3s; */
+    width: 100%;
     overflow: hidden;
 }
 .course-cell-conatiner:hover{

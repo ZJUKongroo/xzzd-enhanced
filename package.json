@@ -1,7 +1,7 @@
 {
   "name": "xzzd-enhanced",
   "displayName": "XZZD Enhanced",
-  "version": "0.0.3",
+  "version": "0.1.1",
   "private": true,
   "packageManager": "pnpm@9.7.1",
   "description": "Improved UI for learning at ZJU home page",
@@ -35,7 +35,6 @@
     "@types/animejs": "^3.1.13",
     "animejs": "^4.0.2",
     "axios": "^1.7.7",
-    "element-plus": "^2.8.8",
     "pinia": "^2.2.6",
     "vue-i18n": "10",
     "vue-router": "^4.4.5"

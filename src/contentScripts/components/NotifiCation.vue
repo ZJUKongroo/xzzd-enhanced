@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { animate, createSpring, stagger } from 'animejs'
 import axios from '~/request'
 
 const ntf = ref<NOTIFICATIONS> ({
   unread_count: 0,
   notifications: [],
+  total_count: 0,
 })
 const limit = 10
-let offset = 0
 
 // Dynamically import the components,
 // returning a AsyncComponent instance that loads the corresponding Vue component.
@@ -23,6 +24,8 @@ const exam_score_updated = defineAsyncComponent(() => import('./ntf/ExamScoreUpd
 const exam_submit_started = defineAsyncComponent(() => import('./ntf/ExamSubmitStarted.vue'))
 const exam_expiring = defineAsyncComponent(() => import('./ntf/ExamExpiring.vue'))
 const exam_will_start = defineAsyncComponent(() => import('./ntf/ExamWillStart.vue'))
+const exam_opened = defineAsyncComponent(() => import('./ntf/ExamOpened.vue'))
+const homework_score_updated = defineAsyncComponent(() => import('./ntf/HomeworkScoreUpdated.vue'))
 
 // Define a component mapping table with keys as component names (strings) and values
 // as dynamically imported Promise objects.
@@ -34,10 +37,12 @@ const component_map: { [key: string]: typeof topic_create } = {
   activity_opened,
   homework_is_recommended,
   homework_expiring_today,
+  homework_score_updated,
   exam_score_updated,
   exam_submit_started,
   exam_expiring,
   exam_will_start,
+  exam_opened,
 }
 
 /**
@@ -58,7 +63,7 @@ onBeforeMount(() => {
   getNotification()
 })
 
-async function getNotification() {
+async function getNotification(pageNumber: number = 0) {
   let userId = localStorage.getItem('userId')
   if (!userId) {
     const findReg = /(?<=<span[^>]*\sid="userId"[^>]*\sdata-id=")[^"]+(?=")/g
@@ -72,16 +77,28 @@ async function getNotification() {
     }
   }
   if (userId) {
-    const data = JSON.parse((await axios.get(`/ntf/users/${userId}/notifications?offset=${offset}&limit=${limit}&additionalFields=unread_count&removed=only_mobile`)).data) as NOTIFICATIONS
-    if (ntf.value.notifications.length === 0) {
-      ntf.value = data
-    }
-    else {
-      ntf.value.notifications = ntf.value.notifications.concat(data.notifications)
-    }
-    offset += limit
+    const data = JSON.parse((await axios.get(`/ntf/users/${userId}/notifications?offset=${pageNumber * limit}&limit=${limit}&additionalFields=unread_count,total_count&removed=only_mobile`)).data) as NOTIFICATIONS
+    ntf.value = data
+    nextTick(() => {
+      animate('.notification-cell', {
+        opacity: [0, 1],
+        translateX: [-50, 0],
+        duration: 100,
+        delay: stagger(50),
+        ease: createSpring(),
+      })
+    })
   }
 }
+
+onMounted(() => {
+  animate('.notification-header', {
+    opacity: [0, 1],
+    translateX: [-50, 0],
+    duration: 100,
+    ease: createSpring(),
+  })
+})
 
 defineExpose({ getNotification })
 </script>
@@ -93,14 +110,20 @@ defineExpose({ getNotification })
         'notification-header-unread': ntf.unread_count > 0,
       }" :data-unread-count="Math.floor(ntf.unread_count)"
     >
-      {{ $t("message.notification_title") }}
+      <v-icon class="mr-4" size="23" icon="mdi-bell" /> {{ $t("message.notification_title") }}
     </div>
     <div v-for="(notification, index) in ntf.notifications" :key="index" class="notification-cell">
       <component :is="getComponent(notification.type)" :data="notification" />
     </div>
-    <div class="notification-load" @click="getNotification">
+    <!-- <v-btn class="notification-load mt-4" variant="tonal" @click="getNotification">
       {{ $t("message.notification_load") }}
-    </div>
+    </v-btn> -->
+    <v-pagination
+      class="mt-4"
+      :length="Math.ceil(ntf.total_count / limit)"
+      :total-visible="7"
+      @update:model-value="(pageNumber: number) => getNotification(pageNumber - 1)"
+    />
   </div>
 </template>
 
@@ -119,7 +142,7 @@ defineExpose({ getNotification })
   display: inline-block; /* Adjust display as needed for proper positioning */
   /* Existing styles below */
   font-weight: 600;
-  font-size: 23px;
+  font-size: 25px;
   margin: 6px;
   margin-left: 10px;
 }
@@ -140,25 +163,11 @@ defineExpose({ getNotification })
   border-radius: 50%;
 }
 
-/*.notification-cell{
-    border: 1px solid var(--xzzd-border-color);
-    border-radius: 8px;
-    margin: 10px;
-    padding: 9px;
-}*/
-.notification-load{
-  border: 1px solid var(--xzzd-border-color);
-  border-radius: 4px;
-  font-size: 17px;
-  transition: .3s;
-  margin-left: 10px;
-  width: 100px;
-  text-align: center;
-}
 .notification-load:hover{
   cursor: pointer;
   background-color: var(--xzzd-button-hover);
 }
+
 .notification-load:active{
   background-color: var(--xzzd-button-active);
 }

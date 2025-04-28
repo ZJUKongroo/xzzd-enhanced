@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { animate, createSpring, stagger } from 'animejs'
 import axios from '~/request'
 
 const course_list = ref<RECENT_COURSE> ({
@@ -9,37 +10,29 @@ const course_list = ref<RECENT_COURSE> ({
 onBeforeMount(() => {
   axios.get('/api/user/recently-visited-courses').then((res) => {
     course_list.value = JSON.parse(res.data) as RECENT_COURSE
+    nextTick(() => {
+      animate('.recent-course-cell', {
+        opacity: [0, 1],
+        translateX: [20, 0],
+        duration: 100,
+        ease: createSpring(),
+        delay: stagger(100, { start: 100 }),
+      })
+    })
   })
 })
 
-// function openUrl(course: COURSE) {
-//   window.location.href = `https://courses.zju.edu.cn/course/${course.id}/content#/`
-// }
+onMounted(() => {
+  animate('.recent-course-container', {
+    opacity: [0, 1],
+    translateX: [20, 0],
+    duration: 100,
+    ease: createSpring(),
+  })
+})
 </script>
 
 <template>
-  <!-- <div class="recent-course-container">
-    <div class="recent-course-header">
-      {{ $t("message.recent_course") }}
-    </div>
-    <div
-      v-for="(course, index) in course_list.visited_courses" :key="index" :style="{
-        backgroundImage: `url(${course.cover})`,
-      }" class="recent-course-cell" @click="openUrl(course)"
-    >
-      <div class="recent-course-cell-wrapper ellipsis-text">
-        <div class="recent-course-cell-name">
-          {{ course.name }}
-        </div>
-        <div class="recent-course-cell-department ellipsis-text">
-          {{ course.department.name }}
-        </div>
-        <div class="recent-course-cell-class ellipsis-text">
-          {{ course.course_attributes.teaching_class_name }}
-        </div>
-      </div>
-    </div>
-  </div> -->
   <v-card prepend-icon="mdi-history" flat border class="recent-course-container">
     <template #title>
       <div class="recent-course-header">
@@ -89,7 +82,7 @@ onBeforeMount(() => {
     padding: 8px;
     border-radius: 4px;
     margin-bottom: 5px;
-    transition: .3s;
+    /* transition: .3s; */
     overflow: hidden;
     background-size: contain;
     background-repeat: no-repeat;

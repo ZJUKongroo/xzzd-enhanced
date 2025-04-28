@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { animate, createSpring, stagger } from 'animejs'
 import CourseCell from '../components/CourseCell.vue'
 import axios from '~/request'
 
@@ -37,7 +38,27 @@ async function getCourse(page: number, page_size: number) {
   })).data) as MY_COURSE
   courses.value.courses = res.courses
   total.value = res.total
+  nextTick(() => {
+    animate('.course-cell', {
+      opacity: [0, 1],
+      translateY: [-50, 0],
+      duration: 100,
+      delay: stagger(50, {
+        grid: [2, 5],
+      }),
+      ease: createSpring(),
+    })
+  })
 }
+
+onMounted(() => {
+  animate('.course-header', {
+    opacity: [0, 1],
+    translateX: [-50, 0],
+    duration: 100,
+    ease: createSpring(),
+  })
+})
 
 onBeforeMount(() => {
   getCourse(1, pageSize.value)
@@ -46,24 +67,17 @@ onBeforeMount(() => {
 
 <template>
   <div class="course-container">
+    <h2 class="course-header mb-4">
+      {{ $t('message.my_course') }}
+    </h2>
     <div class="course-cell-wrapper">
-      <CourseCell v-for="(course, index) in courses.courses" :key="index" :data="course" />
+      <span v-for="(course, index) in courses.courses" :key="index" class="course-cell">
+        <CourseCell :data="course" />
+      </span>
     </div>
     <div class="course-footer">
-      <!-- <v-pagination
-        v-model:current-page="currentPage"
-        v-model:page-size="pageSize"
-        :page-sizes="[10, 20, 30]"
-        :background="true"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="total"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      /> -->
       <v-pagination
-        v-model="currentPage"
-        :length="Math.ceil(total / pageSize)"
-        :total-visible="7"
+        v-model="currentPage" :length="Math.ceil(total / pageSize)" :total-visible="7"
         @update:model-value="handleCurrentChange"
       />
     </div>
@@ -71,18 +85,24 @@ onBeforeMount(() => {
 </template>
 
 <style>
-.course-container{
-  padding: 15px;
+.course-container {
+  padding: 40px;
   width: 100%;
   height: 100%;
   overflow: hidden auto;
 }
-.course-cell-wrapper{
+
+.course-cell-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 10px;
 }
-.course-footer{
+.course-cell{
+  width: calc(50% - 20px);
+}
+
+.course-footer {
   display: flex;
   align-items: center;
   justify-content: center;

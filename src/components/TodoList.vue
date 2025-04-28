@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import browser from 'webextension-polyfill/'
+import { animate, createSpring, stagger } from 'animejs'
 import axios from '~/request'
 
 const todo_list = ref<TODO_LIST> ({
@@ -40,6 +41,21 @@ function requestTodos() {
       if (res.status >= 200 && res.status < 300) {
         todo_list.value = JSON.parse(res.data) as TODO_LIST
         isLogin.value = true
+        nextTick(() => {
+          animate('.todolist-container', {
+            opacity: [0, 1],
+            translateX: [20, 0],
+            duration: 100,
+            ease: createSpring(),
+          })
+          animate('.todolist-cell', {
+            opacity: [0, 1],
+            translateX: [20, 0],
+            duration: 100,
+            ease: createSpring(),
+            delay: stagger(100, { start: 100 }),
+          })
+        })
       }
       resolve(res.status)
     })
@@ -51,24 +67,6 @@ onBeforeMount(() => getTodos())
 
 <template>
   <template v-if="isLogin">
-    <!-- <div class="todolist-container"> -->
-    <!-- <div class="todolist-header">
-        {{ $t("message.todo") }}
-      </div>
-      <a v-for="(todo, index) in sortedItem" :key="index" class="todolist-cell" :href="`https://courses.zju.edu.cn/course/${todo.course_id}/learning-activity#/${todo.id}?&view=scores`">
-        <div class="todolist-cell-name">
-          {{ todo.course_name }}
-          <div class="todolist-cell-type">
-            {{ $t(`message.todo_type_${todo.type}`) }}
-          </div>
-        </div>
-        <div class="todolist-cell-title ellipsis-text">
-          {{ todo.title }}
-        </div>
-        <div class="todolist-cell-endtime">
-          {{ $t("message.todo_endtime") }} {{ (new Date(todo.end_time)).toLocaleString() }}
-        </div>
-      </a> -->
     <v-card
       border flat class="todolist-container"
       prepend-icon="mdi-check-bold"
@@ -122,7 +120,6 @@ onBeforeMount(() => getTodos())
     border-radius: 4px;
     padding: 8px;
     margin-bottom: 5px;
-    transition: .3s;
     display: block;
 }
 .todolist-cell:hover{
@@ -146,7 +143,7 @@ onBeforeMount(() => getTodos())
     font-weight: 300;
 }
 .todolist-cell-type{
-    font-size: 8px;
+    font-size: 9px;
     border-radius: 5px;
     padding: 1px;
     padding-left: 2px;

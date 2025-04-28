@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ElMessage } from 'element-plus'
 import './ntfc.css'
 import type { PropType } from 'vue'
 import CommonBody from './CommonBody.vue'
@@ -15,10 +14,10 @@ const payload = ref<PAYLOAD>(props.data.payload as PAYLOAD)
 
 function copyMessage() {
   navigator.clipboard.writeText(JSON.stringify(props.data))
-  ElMessage({
-    type: 'success',
-    message: '已复制到剪贴板',
-  })
+  // ElMessage({
+  //   type: 'success',
+  //   message: '已复制到剪贴板',
+  // })
 }
 </script>
 
