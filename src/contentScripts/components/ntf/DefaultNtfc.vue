@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import '~/styles/ntfc.css'
+import '../../styles/ntfc.css'
 import type { PropType } from 'vue'
 import CommonBody from './CommonBody.vue'
 

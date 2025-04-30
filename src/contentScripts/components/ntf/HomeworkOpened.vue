@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import '~/styles/ntfc.css'
+import '../../styles/ntfc.css'
 import type { PropType } from 'vue'
 import { openActivity, openCourse } from './openLink'
 import CommonBody from './CommonBody.vue'
@@ -27,7 +27,7 @@ const payload = ref<HOMEWORK_OPENED_FOR_SUBMISSION>(
       {{ $t('ntf.homework_opened.1') }}
       <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{
         payload.homework_title
-        }}</a>
+      }}</a>
       {{ $t('ntf.homework_opened.2') }}
     </template>
   </CommonBody>

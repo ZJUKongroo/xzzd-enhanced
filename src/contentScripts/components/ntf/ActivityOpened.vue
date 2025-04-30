@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import '~/styles/ntfc.css'
+import '../../styles/ntfc.css'
 import type { PropType } from 'vue'
 import { openActivity, openCourse } from './openLink'
 import CommonBody from './CommonBody.vue'
@@ -27,7 +27,7 @@ const payload = ref<ACTIVITY_EXPIRING>(props.data.payload as ACTIVITY_EXPIRING)
           $t('ntf.activity_expiring.1')
         }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.activity_id)">{{
           payload.activity_title
-          }}</a>{{ $t('ntf.activity_expiring.2') }}
+        }}</a>{{ $t('ntf.activity_expiring.2') }}
       </div>
       <CommonFile :files="payload.uploads" :activity-id="payload.activity_id" />
     </template>

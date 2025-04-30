@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import '~/styles/ntfc.css'
+import '../../styles/ntfc.css'
 import type { PropType } from 'vue'
 import { openActivity, openCourse, openTopic } from './openLink'
 import CommonBody from './CommonBody.vue'
@@ -26,7 +26,7 @@ const payload = ref<TOPIC_CREATE>(props.data.payload as TOPIC_CREATE)
         {{ $t('ntf.topic_create.1')
         }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.activity_id)">{{
           payload.activity_title
-          }}</a>
+        }}</a>
         {{ $t('ntf.topic_create.2') }}
       </div>
       <v-card flat border prepend-icon="mdi-chat">
