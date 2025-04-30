@@ -31,7 +31,10 @@ const payload = ref<TOPIC_CREATE>(props.data.payload as TOPIC_CREATE)
       </div>
       <v-card flat border prepend-icon="mdi-chat">
         <v-card-title class="topic-create-main-title">
-          <a class="ntfc-link topic-create-main-title" @click="openTopic(payload.course_id, payload.topic_id)">
+          <a
+            class="ntfc-link topic-create-main-title"
+            @click="openTopic(payload.course_id, payload.topic_id)"
+          >
             {{ payload.topic_title }}
           </a>
         </v-card-title>

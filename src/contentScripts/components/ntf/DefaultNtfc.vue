@@ -30,8 +30,8 @@ function copyMessage() {
       <div class="ntfc-defaut-content">{{ $t('ntf.default_ntfc.0') }} {{ payload }} <br /></div>
       <div class="ntfc-defaut-banner">
         {{ $t('ntf.default_ntfc.1')
-        }}<span class="ntfc-default-button" @click="copyMessage"> {{ $t('message.copy') }} </span>{{
-          $t('ntf.default_ntfc.2') }}
+        }}<span class="ntfc-default-button" @click="copyMessage"> {{ $t('message.copy') }} </span
+        >{{ $t('ntf.default_ntfc.2') }}
       </div>
     </template>
   </CommonBody>

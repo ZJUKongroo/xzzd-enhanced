@@ -36,6 +36,7 @@ html {
   --out-shadow: 0px 0px 17px #f3f3f310;
   --question-completed-bg: #67924d;
 }
+
 html.dark {
   --xzzd-border-color: #424242;
   --xzzd-bg-color-alpha: #111a;
