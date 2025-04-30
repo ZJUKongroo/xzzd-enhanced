@@ -6,21 +6,24 @@ export default createRouter({
     {
       path: '/user',
       name: 'user',
-      children: [{
-        path: 'index',
-        name: 'home',
-        meta: {
-          title: '主页',
+      children: [
+        {
+          path: 'index',
+          name: 'home',
+          meta: {
+            title: '主页',
+          },
+          component: () => import('../views/HomeView.vue'),
         },
-        component: () => import('../views/HomeView.vue'),
-      }, {
-        path: 'course',
-        name: 'course',
-        meta: {
-          title: '课程',
+        {
+          path: 'course',
+          name: 'course',
+          meta: {
+            title: '课程',
+          },
+          component: () => import('../views/CourseView.vue'),
         },
-        component: () => import('../views/CourseView.vue'),
-      }],
+      ],
     },
     {
       path: '/about',
@@ -39,5 +42,4 @@ export default createRouter({
       component: () => import('../../components/LicenseView.vue'),
     },
   ],
-},
-)
+})

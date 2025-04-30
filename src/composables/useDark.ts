@@ -8,8 +8,7 @@ export function useDark() {
   }
   // watch the change of system dark mode settings
   watch(isDark, (val, _) => {
-    if (val)
-      applyDark()
+    if (val) applyDark()
     else applyLight()
   })
 }

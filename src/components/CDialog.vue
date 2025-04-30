@@ -19,10 +19,8 @@ watch(visible, (val, _) => {
   if (val) {
     visible_.value = true
     nextTick(() => resize())
-  }
-  else {
-    if (bgRef.value)
-      bgRef.value.style.animation = 'cui-dialog-disappear .3s ease-in'
+  } else {
+    if (bgRef.value) bgRef.value.style.animation = 'cui-dialog-disappear .3s ease-in'
     setTimeout(() => {
       visible_.value = false
     }, 295)
@@ -30,8 +28,7 @@ watch(visible, (val, _) => {
 })
 
 onMounted(() => {
-  if (visible.value)
-    nextTick(() => resize())
+  if (visible.value) nextTick(() => resize())
 })
 
 function handleClose() {
@@ -60,41 +57,41 @@ function resize() {
 
 <style>
 .cui-dialog-mask {
-    z-index: 500;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    animation: cui-dialog-blur .6s;
+  z-index: 500;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  animation: cui-dialog-blur 0.6s;
 }
 
 .cui-dialog-bg {
-    position: absolute;
-    width: 500px;
-    height: 300px;
-    max-width: 80%;
-    border: solid var(--xzzd-border-color) 1px;
-    background-color: var(--bg-color-solid);
-    border-radius: 8px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    animation: cui-dialog-appear .6s cubic-bezier(0, 0.6, 0.2, 1.0);
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  max-width: 80%;
+  border: solid var(--xzzd-border-color) 1px;
+  background-color: var(--bg-color-solid);
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  animation: cui-dialog-appear 0.6s cubic-bezier(0, 0.6, 0.2, 1);
 }
 
 .cui-dialog-content {
-    padding: 20px;
-    height: calc(100% - 40px);
-    overflow: auto;
+  padding: 20px;
+  height: calc(100% - 40px);
+  overflow: auto;
 }
 
 .cui-dialog-close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 15px;
-    cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 15px;
+  cursor: pointer;
 }
 </style>

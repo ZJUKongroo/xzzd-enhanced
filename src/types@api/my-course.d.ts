@@ -1,5 +1,5 @@
 export {}
-declare global{
+declare global {
   export interface MY_COURSE {
     courses: COURSE[]
     end: number

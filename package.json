@@ -28,7 +28,8 @@
     "test": "vitest test",
     "test:e2e": "playwright test",
     "postinstall": "simple-git-hooks",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -36,6 +37,7 @@
     "animejs": "^4.0.2",
     "axios": "^1.7.7",
     "pinia": "^2.2.6",
+    "prettier": "^3.5.3",
     "vue-i18n": "10",
     "vue-router": "^4.4.5"
   },

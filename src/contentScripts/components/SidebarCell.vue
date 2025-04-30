@@ -40,8 +40,8 @@ defineProps({
 }
 
 .sidebar-cell i {
-    height: 100%;
-    width: 46px;
+  height: 100%;
+  width: 46px;
   margin-right: 10px;
 }
 </style>

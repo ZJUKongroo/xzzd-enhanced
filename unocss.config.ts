@@ -8,7 +8,5 @@ export default defineConfig({
     // presetAttributify(),
     // presetIcons(),
   ],
-  transformers: [
-    transformerDirectives(),
-  ],
+  transformers: [transformerDirectives()],
 })

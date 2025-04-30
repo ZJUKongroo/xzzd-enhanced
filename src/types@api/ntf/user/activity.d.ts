@@ -1,5 +1,5 @@
 export {}
-declare global{
+declare global {
   interface ACTIVITY extends PAYLOAD {
     activity_id: number
     activity_title: string

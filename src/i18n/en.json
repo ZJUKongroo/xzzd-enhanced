@@ -36,13 +36,22 @@
     "activity_opened": ["Course ", "'s learning activity ", " has opened."],
     "activity_expiring": ["Course ", "'s learning activity ", " is expiring."],
     "has_recommended": ["Course ", "'s homework ", " was recommended by instructor."],
-    "default_ntfc": ["Original Content: ", "This component has not completed yet. Click", "and send to developer to help developing progress"],
+    "default_ntfc": [
+      "Original Content: ",
+      "This component has not completed yet. Click",
+      "and send to developer to help developing progress"
+    ],
     "homework_opened": ["Course ", "'s homework ", " has opened"],
     "homework_expiring_today": ["Course ", "'s homework ", " is expiring today at {time}"],
     "topic_create": [" published a new post in course ", "'s discussion area ", "."],
     "was_recommended": ["Your homework ", " in course ", "was recommended."],
     "exam_score_updated": ["Course ", "'s exam ", " score has been updated"],
-    "homework_score_updated": ["Course ", "'s homework ", " score has been updated to: ", "Instructor comment:"],
+    "homework_score_updated": [
+      "Course ",
+      "'s homework ",
+      " score has been updated to: ",
+      "Instructor comment:"
+    ],
     "exam_submit_started": ["Course ", "'s exam ", " submission has started"],
     "exam_expiring": ["Course ", "'s exam ", " is expiring"],
     "exam_will_start": ["Course ", "'s exam ", " will start soon"],

@@ -14,13 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <v-card
-    class="mx-auto mt-2"
-    :prepend-icon="icon"
-    variants="tonal"
-    border
-    flat
-  >
+  <v-card class="mx-auto mt-2" :prepend-icon="icon" variants="tonal" border flat>
     <template #title>
       <span class="font-weight-black">
         <slot name="title" />
@@ -28,7 +22,7 @@ defineProps({
     </template>
     <template #subtitle>
       <span class="font-weight-light">
-        {{ (new Date(timeStamp)).toLocaleString() }}
+        {{ new Date(timeStamp).toLocaleString() }}
       </span>
     </template>
     <v-divider />

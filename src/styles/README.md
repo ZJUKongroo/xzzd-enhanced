@@ -1,3 +1,3 @@
 # styles
 
-Public stylesheets, will be pre-imported.
+Public style sheets, will be pre-imported.
