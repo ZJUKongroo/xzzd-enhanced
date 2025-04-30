@@ -5,8 +5,6 @@ import { dirname, relative } from 'node:path'
 import type { UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
@@ -46,16 +44,8 @@ export const sharedConfig: UserConfig = {
       dirs: [r('src/components')],
       // generate `components.d.ts` for ts support with Volar
       dts: r('src/components.d.ts'),
-      resolvers: [
-        // auto import icons
-        IconsResolver({
-          prefix: '',
-        }),
-      ],
+      resolvers: [],
     }),
-
-    // https://github.com/antfu/unplugin-icons
-    Icons(),
 
     // https://github.com/unocss/unocss
     UnoCSS(),
