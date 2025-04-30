@@ -35,7 +35,7 @@
     "@element-plus/icons-vue": "^2.3.1",
     "@types/animejs": "^3.1.13",
     "animejs": "^4.0.2",
-    "axios": "^1.7.7",
+    "axios": "^1.8.2",
     "pinia": "^2.2.6",
     "prettier": "^3.5.3",
     "vue-i18n": "10",
