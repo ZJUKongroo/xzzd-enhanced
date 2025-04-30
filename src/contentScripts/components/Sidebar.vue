@@ -46,21 +46,24 @@ onMounted(() => {
 <template>
   <div class="sidebar-main">
     <div class="sidebar-logo sidebar-animate">
-      <div class="sidebar-title">
-        学在浙大
-      </div>
-      <div class="sidebar-subtitle">
-        enhanced
-      </div>
+      <div class="sidebar-title">学在浙大</div>
+      <div class="sidebar-subtitle">enhanced</div>
       <div class="sidebar-logo-version">
         {{ `v${config.version}` }}
       </div>
     </div>
     <div class="sidebar-menu sidebar-animate">
-      <SidebarCell v-for="(option, index) in options" :key="index" v-ripple :name="option.name" :icon-class="option.iconClass" @click="open(option.path)" />
+      <SidebarCell
+        v-for="(option, index) in options"
+        :key="index"
+        v-ripple
+        :name="option.name"
+        :icon-class="option.iconClass"
+        @click="open(option.path)"
+      />
       <SidebarCell v-ripple name="设置" icon-class="mdi-cog" @click="openSettings" />
     </div>
-    <div style="flex-grow:1;">
+    <div style="flex-grow: 1">
       <div />
     </div>
     <SidebarFooter class="sidebar-animate" />

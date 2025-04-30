@@ -16,6 +16,6 @@ export function useVuetifyDarkmode() {
     () => isDark,
     () => {
       setVuetifyDarkmode(isDark.value)
-    },
+    }
   )
 }

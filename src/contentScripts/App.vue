@@ -31,7 +31,7 @@ onMounted(() => saveCookie())
 </template>
 
 <style>
-.app-container{
+.app-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -39,29 +39,29 @@ onMounted(() => saveCookie())
   background-color: var(--xzzd-bg-color-solid);
   color: var(--xzzd-text-color);
 }
-.app-sidebar-container{
+.app-sidebar-container {
   height: 100%;
   width: 40px;
 }
-.app-sidebar{
+.app-sidebar {
   height: 100%;
   width: 40px;
   background-color: var(--xzzd-bg-color-alpha);
   border-right: solid 1px var(--xzzd-border-color);
-  transition: .5s;
+  transition: 0.5s;
   overflow: hidden;
 }
-.app-container .sidebar-cell-wrapper{
+.app-container .sidebar-cell-wrapper {
   margin-top: 10px;
 }
-.sidebar-cell-wrapper:first-child{
+.sidebar-cell-wrapper:first-child {
   margin-top: 30px;
 }
-.app-sidebar:hover{
+.app-sidebar:hover {
   width: 120px;
   backdrop-filter: blur(30px);
 }
-.app-main{
+.app-main {
   width: 100%;
   /* padding: 10px; */
   height: 100%;

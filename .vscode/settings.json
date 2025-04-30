@@ -2,11 +2,14 @@
   "cSpell.words": ["Vitesse"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "vite.autoStart": false,
-  "eslint.experimental.useFlatConfig": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
+  // "eslint.experimental.useFlatConfig": true,
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": "explicit"
+  // },
   "files.associations": {
     "*.css": "css"
-  }
+  },
+  "prettier.enable": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

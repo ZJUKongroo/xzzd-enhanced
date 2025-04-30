@@ -1,6 +1,6 @@
 export {}
 
-declare global{
+declare global {
   interface EXAM extends PAYLOAD {
     activity_id: number
     activity_type: string

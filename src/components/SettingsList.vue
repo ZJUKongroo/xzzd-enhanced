@@ -13,14 +13,12 @@ function locale_change() {
 <template>
   <div class="settings-container">
     <div class="settings-header">
-      {{ $t("message.settings") }}
+      {{ $t('message.settings') }}
     </div>
     <table>
       <tbody>
         <tr class="settings-locale-changer settings-item">
-          <td class="settings-item-title">
-            {{ $t('message.select_prefer_language') }}:
-          </td>
+          <td class="settings-item-title">{{ $t('message.select_prefer_language') }}:</td>
           <td class="settings-item-main">
             <v-select
               v-model="$i18n.locale"
@@ -38,15 +36,15 @@ function locale_change() {
 </template>
 
 <style>
-.settings-container{
+.settings-container {
   padding: 40px;
 }
-.settings-header{
+.settings-header {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 10px;
 }
-.settings-item-title{
+.settings-item-title {
   font-size: 1.3rem;
   font-weight: 500;
   padding-right: 15px;

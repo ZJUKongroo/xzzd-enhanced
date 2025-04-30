@@ -1,5 +1,5 @@
 export {}
-declare global{
+declare global {
   interface HOMEWORK extends PAYLOAD {
     homework_id: number
     homework_title: string

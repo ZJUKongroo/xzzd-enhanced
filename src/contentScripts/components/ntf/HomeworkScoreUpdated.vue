@@ -17,11 +17,17 @@ const payload = ref<HOMEWORK_SCORE_UPDATED>(props.data.payload as HOMEWORK_SCORE
 <template>
   <CommonBody icon="mdi-update" :time-stamp="props.data.timestamp">
     <template #title>
-      {{ $t("message.homework_score_updated") }}
+      {{ $t('message.homework_score_updated') }}
     </template>
     <template #content>
-      {{ $t("ntf.homework_score_updated.0") }} <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a> {{ $t("ntf.homework_score_updated.1") }} <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{ payload.activity_title }}</a> {{ $t("ntf.homework_score_updated.2") }} {{ payload.score }}<br>
-      {{ $t("ntf.homework_score_updated.3") }} {{ payload.instructor_comment }}
+      {{ $t('ntf.homework_score_updated.0') }}
+      <a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a>
+      {{ $t('ntf.homework_score_updated.1') }}
+      <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{
+        payload.activity_title
+      }}</a>
+      {{ $t('ntf.homework_score_updated.2') }} {{ payload.score }}<br />
+      {{ $t('ntf.homework_score_updated.3') }} {{ payload.instructor_comment }}
     </template>
   </CommonBody>
 </template>

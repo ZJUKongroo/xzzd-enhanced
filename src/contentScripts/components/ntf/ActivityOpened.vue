@@ -18,11 +18,17 @@ const payload = ref<ACTIVITY_EXPIRING>(props.data.payload as ACTIVITY_EXPIRING)
 <template>
   <CommonBody icon="mdi-clock-time-one-outline" :time-stamp="props.data.timestamp">
     <template #title>
-      {{ $t("message.activity_opened") }}
+      {{ $t('message.activity_opened') }}
     </template>
     <template #content>
       <div class="ntfc-title">
-        {{ $t("ntf.activity_expiring.0") }}<a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a>{{ $t("ntf.activity_expiring.1") }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.activity_id)">{{ payload.activity_title }}</a>{{ $t("ntf.activity_expiring.2") }}
+        {{ $t('ntf.activity_expiring.0')
+        }}<a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a
+        >{{ $t('ntf.activity_expiring.1')
+        }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.activity_id)">{{
+          payload.activity_title
+        }}</a
+        >{{ $t('ntf.activity_expiring.2') }}
       </div>
       <CommonFile :files="payload.uploads" :activity-id="payload.activity_id" />
     </template>

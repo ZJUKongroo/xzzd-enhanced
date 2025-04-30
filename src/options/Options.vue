@@ -12,10 +12,10 @@ useVuetifyDarkmode()
 </template>
 
 <style>
-.options-main{
+.options-main {
   padding: 20px;
 }
-#app{
+#app {
   overflow: auto;
   background-color: var(--xzzd-bg-color-solid);
 }

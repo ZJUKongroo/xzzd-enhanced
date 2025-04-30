@@ -6,7 +6,7 @@ import { setupApp } from '~/logic/common-setup'
 import '~/styles/index'
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
-(() => {
+;(() => {
   router.beforeEach((to, _, next) => {
     if (to.meta.title) {
       document.title = to.meta.title as string

@@ -1,5 +1,5 @@
 export {}
-declare global{
+declare global {
   export interface RECENT_COURSE {
     visited_courses: COURSE[]
   }

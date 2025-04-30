@@ -40,7 +40,7 @@
   text-align: center;
 }
 
-.sidebar-title{
+.sidebar-title {
   font-size: 30px;
   font-weight: bold;
   color: var(--text-color-solid);
@@ -48,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-.sidebar-subtitle{
+.sidebar-subtitle {
   font-size: 21px;
   color: var(--text-color-solid);
   text-align: left;

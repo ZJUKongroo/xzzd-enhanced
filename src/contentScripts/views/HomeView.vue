@@ -19,7 +19,7 @@ const ntfRef = ref<InstanceType<typeof NotifiCation> | null>(null)
 </template>
 
 <style>
-.home-container{
+.home-container {
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -27,10 +27,10 @@ const ntfRef = ref<InstanceType<typeof NotifiCation> | null>(null)
   display: flex;
   flex-direction: row;
 }
-.home-main{
+.home-main {
   width: 60%;
 }
-.home-sidebar{
+.home-sidebar {
   width: 40%;
 }
 </style>

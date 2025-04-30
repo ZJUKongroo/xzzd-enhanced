@@ -25,17 +25,27 @@ function handleCurrentChange(val: number) {
 }
 
 async function getCourse(page: number, page_size: number) {
-  const conditions = { status: ['ongoing', 'notStarted'], keyword: '', classify_type: 'recently_started', display_studio_list: false }
-  const fields = 'id,name,course_code,department(id,name),grade(id,name),klass(id,name),course_type,cover,small_cover,start_date,end_date,is_started,is_closed,academic_year_id,semester_id,credit,compulsory,second_name,display_name,created_user(id,name),org(is_enterprise_or_organization),org_id,public_scope,audit_status,audit_remark,can_withdraw_course,imported_from,allow_clone,is_instructor,is_team_teaching,is_default_course_cover,archived,instructors(id,name,email,avatar_small_url),course_attributes(teaching_class_name,is_during_publish_period,copy_status,tip,data,audience_type),user_stick_course_record(id),classroom_schedule'
-  const res = JSON.parse((await axios.get('/api/my-courses', {
-    params: {
-      conditions,
-      fields,
-      showScorePassedStatus: false,
-      page,
-      page_size,
-    },
-  })).data) as MY_COURSE
+  const conditions = {
+    status: ['ongoing', 'notStarted'],
+    keyword: '',
+    classify_type: 'recently_started',
+    display_studio_list: false,
+  }
+  const fields =
+    'id,name,course_code,department(id,name),grade(id,name),klass(id,name),course_type,cover,small_cover,start_date,end_date,is_started,is_closed,academic_year_id,semester_id,credit,compulsory,second_name,display_name,created_user(id,name),org(is_enterprise_or_organization),org_id,public_scope,audit_status,audit_remark,can_withdraw_course,imported_from,allow_clone,is_instructor,is_team_teaching,is_default_course_cover,archived,instructors(id,name,email,avatar_small_url),course_attributes(teaching_class_name,is_during_publish_period,copy_status,tip,data,audience_type),user_stick_course_record(id),classroom_schedule'
+  const res = JSON.parse(
+    (
+      await axios.get('/api/my-courses', {
+        params: {
+          conditions,
+          fields,
+          showScorePassedStatus: false,
+          page,
+          page_size,
+        },
+      })
+    ).data
+  ) as MY_COURSE
   courses.value.courses = res.courses
   total.value = res.total
   nextTick(() => {
@@ -77,7 +87,9 @@ onBeforeMount(() => {
     </div>
     <div class="course-footer">
       <v-pagination
-        v-model="currentPage" :length="Math.ceil(total / pageSize)" :total-visible="7"
+        v-model="currentPage"
+        :length="Math.ceil(total / pageSize)"
+        :total-visible="7"
         @update:model-value="handleCurrentChange"
       />
     </div>
@@ -98,7 +110,7 @@ onBeforeMount(() => {
   flex-wrap: wrap;
   gap: 10px;
 }
-.course-cell{
+.course-cell {
   width: calc(50% - 20px);
 }
 

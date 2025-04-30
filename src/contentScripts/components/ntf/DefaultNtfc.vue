@@ -27,31 +27,30 @@ function copyMessage() {
       {{ props.data.type }}
     </template>
     <template #content>
-      <div class="ntfc-defaut-content">
-        {{ $t("ntf.default_ntfc.0") }} {{ payload }} <br>
-      </div>
+      <div class="ntfc-defaut-content">{{ $t('ntf.default_ntfc.0') }} {{ payload }} <br /></div>
       <div class="ntfc-defaut-banner">
-        {{ $t("ntf.default_ntfc.1") }}<span class="ntfc-default-button" @click="copyMessage">
-          {{ $t("message.copy") }}
-        </span>{{ $t("ntf.default_ntfc.2") }}
+        {{ $t('ntf.default_ntfc.1')
+        }}<span class="ntfc-default-button" @click="copyMessage">
+          {{ $t('message.copy') }} </span
+        >{{ $t('ntf.default_ntfc.2') }}
       </div>
     </template>
   </CommonBody>
 </template>
 
 <style>
-.ntfc-defaut-content{
+.ntfc-defaut-content {
   font-size: 13px;
 }
-.ntfc-defaut-banner{
+.ntfc-defaut-banner {
   font-size: 16px;
   font-weight: 300;
 }
-.ntfc-default-button{
+.ntfc-default-button {
   border: solid 1px var(--xzzd-border-color);
   border-radius: 2px;
   margin-left: 2px;
   margin-right: 2px;
-  transition: .3s;
+  transition: 0.3s;
 }
 </style>

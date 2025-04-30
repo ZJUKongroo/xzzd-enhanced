@@ -14,11 +14,9 @@ defineProps({
 function toFileSizeString(fileSize: number) {
   if (fileSize < 1024) {
     return `${fileSize} B`
-  }
-  else if (fileSize < 1048576) {
+  } else if (fileSize < 1048576) {
     return `${(fileSize / 1024).toPrecision(3)} KB`
-  }
-  else {
+  } else {
     return `${(fileSize / 1048576).toPrecision(3)} MB`
   }
 }
@@ -27,7 +25,13 @@ function toFileSizeString(fileSize: number) {
 <template>
   <v-card
     v-for="(file, index) in files"
-    :key="index" prepend-icon="mdi-file-document-outline" border flat link class="mt-2" @click="openFile(activityId, file.reference_id)"
+    :key="index"
+    prepend-icon="mdi-file-document-outline"
+    border
+    flat
+    link
+    class="mt-2"
+    @click="openFile(activityId, file.reference_id)"
   >
     <template #title>
       <span class="font-weight-black text-subtitle-1">
@@ -38,9 +42,7 @@ function toFileSizeString(fileSize: number) {
       <span class="text-subtitle-2">
         {{ toFileSizeString(file.file_size) }}
       </span>
-      <span class="font-weight-light text-subtitle-2">
-        - {{ file.type }}
-      </span>
+      <span class="font-weight-light text-subtitle-2"> - {{ file.type }} </span>
     </template>
   </v-card>
 </template>

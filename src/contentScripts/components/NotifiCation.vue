@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { animate, createSpring, stagger } from 'animejs'
 import axios from '~/request'
 
-const ntf = ref<NOTIFICATIONS> ({
+const ntf = ref<NOTIFICATIONS>({
   unread_count: 0,
   notifications: [],
   total_count: 0,
@@ -13,13 +13,17 @@ const limit = 10
 // Dynamically import the components,
 // returning a AsyncComponent instance that loads the corresponding Vue component.
 const topic_create = defineAsyncComponent(() => import('./ntf/TopicCreate.vue'))
-const homework_opened_for_submission = defineAsyncComponent(() => import('./ntf/HomeworkOpened.vue'))
+const homework_opened_for_submission = defineAsyncComponent(
+  () => import('./ntf/HomeworkOpened.vue')
+)
 const activity_expiring = defineAsyncComponent(() => import('./ntf/ActivityExpiring.vue'))
 const activity_opened = defineAsyncComponent(() => import('./ntf/ActivityOpened.vue'))
 const has_recommend_homework = defineAsyncComponent(() => import('./ntf/HasRecommend.vue'))
 const default_nftc = defineAsyncComponent(() => import('./ntf/DefaultNtfc.vue'))
 const homework_is_recommended = defineAsyncComponent(() => import('./ntf/WasRecommend.vue'))
-const homework_expiring_today = defineAsyncComponent(() => import('./ntf/HomeworkExpiringToday.vue'))
+const homework_expiring_today = defineAsyncComponent(
+  () => import('./ntf/HomeworkExpiringToday.vue')
+)
 const exam_score_updated = defineAsyncComponent(() => import('./ntf/ExamScoreUpdated.vue'))
 const exam_submit_started = defineAsyncComponent(() => import('./ntf/ExamSubmitStarted.vue'))
 const exam_expiring = defineAsyncComponent(() => import('./ntf/ExamExpiring.vue'))
@@ -53,8 +57,7 @@ const component_map: { [key: string]: typeof topic_create } = {
 function getComponent(index: string) {
   if (index in component_map) {
     return component_map[index]
-  }
-  else {
+  } else {
     return default_nftc
   }
 }
@@ -77,7 +80,13 @@ async function getNotification(pageNumber: number = 0) {
     }
   }
   if (userId) {
-    const data = JSON.parse((await axios.get(`/ntf/users/${userId}/notifications?offset=${pageNumber * limit}&limit=${limit}&additionalFields=unread_count,total_count&removed=only_mobile`)).data) as NOTIFICATIONS
+    const data = JSON.parse(
+      (
+        await axios.get(
+          `/ntf/users/${userId}/notifications?offset=${pageNumber * limit}&limit=${limit}&additionalFields=unread_count,total_count&removed=only_mobile`
+        )
+      ).data
+    ) as NOTIFICATIONS
     ntf.value = data
     nextTick(() => {
       animate('.notification-cell', {
@@ -106,11 +115,13 @@ defineExpose({ getNotification })
 <template>
   <div class="notification-container">
     <div
-      class="notification-header" :class="{
+      class="notification-header"
+      :class="{
         'notification-header-unread': ntf.unread_count > 0,
-      }" :data-unread-count="Math.floor(ntf.unread_count)"
+      }"
+      :data-unread-count="Math.floor(ntf.unread_count)"
     >
-      <v-icon class="mr-4" size="23" icon="mdi-bell" /> {{ $t("message.notification_title") }}
+      <v-icon class="mr-4" size="23" icon="mdi-bell" /> {{ $t('message.notification_title') }}
     </div>
     <div v-for="(notification, index) in ntf.notifications" :key="index" class="notification-cell">
       <component :is="getComponent(notification.type)" :data="notification" />
@@ -128,13 +139,13 @@ defineExpose({ getNotification })
 </template>
 
 <style>
-.notification-container{
-    /* border: solid 1px var(--xzzd-border-color); */
-    border-radius: 10px;
-    padding: 6px;
-    width: calc(100% - 12px);
-    margin: 6px;
-    color: var(--xzzd-text-color)
+.notification-container {
+  /* border: solid 1px var(--xzzd-border-color); */
+  border-radius: 10px;
+  padding: 6px;
+  width: calc(100% - 12px);
+  margin: 6px;
+  color: var(--xzzd-text-color);
 }
 
 .notification-header {
@@ -148,7 +159,9 @@ defineExpose({ getNotification })
 }
 
 .notification-header-unread.notification-header[data-unread-count]::after {
-  content: attr(data-unread-count); /* Display a dot, not the count. Use data-attribute for count. */
+  content: attr(
+    data-unread-count
+  ); /* Display a dot, not the count. Use data-attribute for count. */
   position: absolute;
   top: 0; /* Position near the top edge */
   right: 0; /* Position near the right edge */
@@ -163,12 +176,12 @@ defineExpose({ getNotification })
   border-radius: 50%;
 }
 
-.notification-load:hover{
+.notification-load:hover {
   cursor: pointer;
   background-color: var(--xzzd-button-hover);
 }
 
-.notification-load:active{
+.notification-load:active {
   background-color: var(--xzzd-button-active);
 }
 </style>
