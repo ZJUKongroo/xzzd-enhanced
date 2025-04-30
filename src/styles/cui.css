@@ -12,24 +12,22 @@
 
 @keyframes cui-dialog-disappear {
   0% {
-    opacity: 100%;
+    opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
 
   100% {
-    opacity: 0%;
+    opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
   }
 }
 
 @keyframes cui-dialog-blur {
   0% {
-    opacity: 0%;
-    /* backdrop-filter: blur(0px); */
+    opacity: 0;
   }
 
   100% {
-    opacity: 100%;
-    /* backdrop-filter: blur(10px); */
+    opacity: 1;
   }
 }

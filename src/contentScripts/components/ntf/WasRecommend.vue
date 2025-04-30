@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import './ntfc.css'
+import '~/styles/ntfc.css'
 import type { PropType } from 'vue'
 import { openActivity, openCourse } from './openLink'
 import CommonBody from './CommonBody.vue'
@@ -24,10 +24,9 @@ const payload = ref<HOMEWORK_IS_RECOMMENDED>(props.data.payload as HOMEWORK_IS_R
         {{ $t('ntf.was_recommended.0')
         }}<a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{
           payload.homework_title
-        }}</a
-        >{{ $t('ntf.was_recommended.1')
-        }}<a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a
-        >{{ $t('ntf.was_recommended.2') }}
+          }}</a>{{ $t('ntf.was_recommended.1')
+          }}<a class="ntfc-link" @click="openCourse(payload.course_id)">{{ payload.course_name }}</a>{{
+          $t('ntf.was_recommended.2') }}
       </template>
       <template v-else>
         {{ $t('ntf.was_recommended.0') }}
@@ -35,7 +34,7 @@ const payload = ref<HOMEWORK_IS_RECOMMENDED>(props.data.payload as HOMEWORK_IS_R
         {{ $t('ntf.was_recommended.1') }}
         <a class="ntfc-link" @click="openActivity(payload.course_id, payload.homework_id)">{{
           payload.homework_title
-        }}</a>
+          }}</a>
         {{ $t('ntf.was_recommended.2') }}
       </template>
     </template>

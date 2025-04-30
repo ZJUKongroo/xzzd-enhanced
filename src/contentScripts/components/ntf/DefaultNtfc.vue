@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import './ntfc.css'
+import '~/styles/ntfc.css'
 import type { PropType } from 'vue'
 import CommonBody from './CommonBody.vue'
 
@@ -30,8 +30,8 @@ function copyMessage() {
       <div class="ntfc-defaut-content">{{ $t('ntf.default_ntfc.0') }} {{ payload }} <br /></div>
       <div class="ntfc-defaut-banner">
         {{ $t('ntf.default_ntfc.1')
-        }}<span class="ntfc-default-button" @click="copyMessage"> {{ $t('message.copy') }} </span
-        >{{ $t('ntf.default_ntfc.2') }}
+        }}<span class="ntfc-default-button" @click="copyMessage"> {{ $t('message.copy') }} </span>{{
+          $t('ntf.default_ntfc.2') }}
       </div>
     </template>
   </CommonBody>
@@ -41,10 +41,12 @@ function copyMessage() {
 .ntfc-defaut-content {
   font-size: 13px;
 }
+
 .ntfc-defaut-banner {
   font-size: 16px;
   font-weight: 300;
 }
+
 .ntfc-default-button {
   border: solid 1px var(--xzzd-border-color);
   border-radius: 2px;
